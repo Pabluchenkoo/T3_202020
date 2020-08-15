@@ -81,7 +81,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinami
 			return null;
 		}
 
-		public Object eliminar(String dato) {
+		public Object eliminar(Object dato) {
 			// TODO implementar
 			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
 			boolean bandera = true;
@@ -96,10 +96,6 @@ public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinami
 			return respuesta;
 		}
 
-		@Override
-		public Object eliminar(Object dato) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+		
 
 }
