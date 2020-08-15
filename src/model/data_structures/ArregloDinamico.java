@@ -7,7 +7,7 @@ package model.data_structures;
  * @author Fernando De la Rosa
  *
  */
-public class ArregloDinamico implements IArregloDinamico {
+public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinamico {
 		/**
 		 * Capacidad maxima del arreglo
 		 */
@@ -19,7 +19,7 @@ public class ArregloDinamico implements IArregloDinamico {
         /**
          * Arreglo de elementos de tamaNo maximo
          */
-        private String elementos[ ];
+        private Object elementos[ ];
 
         /**
          * Construir un arreglo con la capacidad maxima inicial.
@@ -27,18 +27,18 @@ public class ArregloDinamico implements IArregloDinamico {
          */
 		public ArregloDinamico( int max )
         {
-               elementos = new String[max];
+               elementos = new Object[max];
                tamanoMax = max;
                tamanoAct = 0;
         }
         
-		public void agregar( String dato )
+		public void agregar( Object dato )
         {
                if ( tamanoAct == tamanoMax )
                {  // caso de arreglo lleno (aumentar tamaNo)
                     tamanoMax = 2 * tamanoMax;
-                    String [ ] copia = elementos;
-                    elementos = new String[tamanoMax];
+                    Object [ ] copia = elementos;
+                    elementos = new Object[tamanoMax];
                     for ( int i = 0; i < tamanoAct; i++)
                     {
                      	 elementos[i] = copia[i];
@@ -57,20 +57,48 @@ public class ArregloDinamico implements IArregloDinamico {
 			return tamanoAct;
 		}
 
-		public String darElemento(int i) {
+		public Object darElemento(int i) {
 			// TODO implementar
+			if(i<0 || i>=tamanoAct){
+				return null;
+			}else{
+				return elementos[i];
+			}
+			
+		}
+
+		public Object buscar(Object dato) {
+			// TODO implementar
+			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
+			
+			boolean bandera = true;
+			for (int i = 0; i < elementos.length && bandera; i++) {
+					if(((Comparable<T>) elementos[i]).compareTo((T) dato)==0){
+						bandera = false;
+						return elementos[i];
+					}
+			}
 			return null;
 		}
 
-		public String buscar(String dato) {
+		public Object eliminar(String dato) {
 			// TODO implementar
 			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
-			return null;
+			boolean bandera = true;
+			Object respuesta = null;
+			for (int i = 0; i < elementos.length && bandera; i++) {
+					if(((Comparable<T>) elementos[i]).compareTo((T) dato)==0){
+						bandera = false;
+						respuesta = elementos[i];
+						elementos[i]=null;
+					}
+			}
+			return respuesta;
 		}
 
-		public String eliminar(String dato) {
-			// TODO implementar
-			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
+		@Override
+		public Object eliminar(Object dato) {
+			// TODO Auto-generated method stub
 			return null;
 		}
 
