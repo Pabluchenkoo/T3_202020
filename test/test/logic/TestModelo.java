@@ -40,12 +40,20 @@ public class TestModelo {
 	@Test
 	public void testAgregar() {
 		// TODO Completar la prueba
+		setUp2();
+		modelo.agregar("hola");
+		assertEquals(CAPACIDAD*2,modelo.darCapacidad());
 	}
 
 	@Test
 	public void testBuscar() {
 		setUp2();
 		// TODO Completar la prueba
+		assertEquals(1,modelo.buscar(1));
+		assertEquals(0,modelo.buscar(0));
+		assertEquals(null , modelo.buscar(CAPACIDAD));
+		assertEquals(null , modelo.buscar(CAPACIDAD+1));
+		assertEquals(null, modelo.buscar(-1));
 	}
 
 	@Test
