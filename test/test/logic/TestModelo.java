@@ -60,6 +60,13 @@ public class TestModelo {
 	public void testEliminar() {
 		setUp2();
 		// TODO Completar la prueba
+		assertEquals(null, modelo.eliminar(CAPACIDAD));
+		assertEquals(null, modelo.eliminar(-1));
+		assertEquals(0,modelo.eliminar(0));
+		assertEquals(CAPACIDAD-1,modelo.darTamano());
+	
+		
+		
 		
 	}
 
