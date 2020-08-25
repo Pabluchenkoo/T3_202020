@@ -30,7 +30,9 @@ public class TestModelo {
 
 	@Test
 	public void testDarTamano() {
+		
 		// TODO
+		setUp1();
 	}
 
 	@Test
