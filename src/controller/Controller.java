@@ -66,7 +66,7 @@ public class Controller {
 	{
 		try
 		{
-			FileReader archivo = new FileReader("Autores1.csv");
+			FileReader archivo = new FileReader("./Autores1.csv");
 			BufferedReader leer = new BufferedReader( archivo );
 			String cadena = null;
 			
