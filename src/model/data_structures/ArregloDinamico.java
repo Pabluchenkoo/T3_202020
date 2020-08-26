@@ -92,6 +92,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinami
 						respuesta = elementos[i];
 						elementos[i]=null;
 						tamanoAct--;
+
 					}
 			}
 			return respuesta;

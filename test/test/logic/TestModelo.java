@@ -40,18 +40,33 @@ public class TestModelo {
 	@Test
 	public void testAgregar() {
 		// TODO Completar la prueba
+		setUp2();
+		modelo.agregar("hola");
+		assertEquals(CAPACIDAD*2,modelo.darCapacidad());
 	}
 
 	@Test
 	public void testBuscar() {
 		setUp2();
 		// TODO Completar la prueba
+		assertEquals(1,modelo.buscar(1));
+		assertEquals(0,modelo.buscar(0));
+		assertEquals(null , modelo.buscar(CAPACIDAD));
+		assertEquals(null , modelo.buscar(CAPACIDAD+1));
+		assertEquals(null, modelo.buscar(-1));
 	}
 
 	@Test
 	public void testEliminar() {
 		setUp2();
 		// TODO Completar la prueba
+		assertEquals(null, modelo.eliminar(CAPACIDAD));
+		assertEquals(null, modelo.eliminar(-1));
+		assertEquals(0,modelo.eliminar(0));
+		assertEquals(CAPACIDAD-1,modelo.darTamano());
+	
+		
+		
 		
 	}
 
