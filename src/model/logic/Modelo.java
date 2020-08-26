@@ -40,6 +40,13 @@ public class Modelo {
 	}
 
 	/**
+	 * @return capacidad actual del modelo
+	 */
+	public int darCapacidad()
+	{
+		return datos.darCapacidad();
+	}
+	/**
 	 * Requerimiento de agregar dato
 	 * @param dato
 	 */
