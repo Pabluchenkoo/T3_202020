@@ -50,7 +50,7 @@ public class Modelo {
 	 * Requerimiento de agregar dato
 	 * @param dato
 	 */
-	public void agregar(Pelicula dato)
+	public void agregar(Object dato)
 	{	
 		datos.agregar(dato);
 	}
@@ -60,7 +60,7 @@ public class Modelo {
 	 * @param dato Dato a buscar
 	 * @return dato encontrado
 	 */
-	public Object buscar(Pelicula dato)
+	public Object buscar(Object dato)
 	{
 		return datos.buscar(dato);
 	}
@@ -70,7 +70,7 @@ public class Modelo {
 	 * @param dato Dato a eliminar
 	 * @return dato eliminado
 	 */
-	public Object eliminar(Pelicula dato)
+	public Object eliminar(Object dato)
 	{
 		return datos.eliminar(dato);
 	}
