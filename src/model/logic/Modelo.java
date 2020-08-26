@@ -1,5 +1,8 @@
 package model.logic;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 import model.data_structures.ArregloDinamico;
 import model.data_structures.IArregloDinamico;
 
@@ -75,5 +78,53 @@ public class Modelo {
 		return datos.eliminar(dato);
 	}
 
-
+	public String PeliculasDeDirectores(String palabra)
+	{
+		try
+		{
+			FileReader archivo = new FileReader("./Autores1.csv");
+			BufferedReader leer = new BufferedReader( archivo );
+			String cadena = null;
+			
+			while((cadena=leer.readLine()) != null)
+			{
+				String [] Palabras = cadena.split(";");
+				if (Palabras[1].equals(palabra))
+				{
+					int calificacion = Integer.parseInt( Palabras[3] );
+					
+					if(calificacion>=7)
+					{
+					System.out.println( " " + Palabras[0] + " \n " + Palabras[2] + " \n " + Palabras[4] + " \n " + Palabras[5] + " \n " + Palabras[6] + " \n " + Palabras[7] + " \n " + Palabras[8] + " \n " + Palabras[9] );
+					}
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println("Archivo no encontrado");
+		}
+		return "";
+	}
+	
+	public void leerArchivo (){
+		try
+		{
+			FileReader archivo = new FileReader("./Autores1.csv");
+			BufferedReader leer = new BufferedReader( archivo );
+			String cadena = null;
+			
+			while((cadena=leer.readLine()) != null)
+			{
+				String [] Palabras = cadena.split(";");
+				System.out.println( " " + Palabras[2] + " \n ");
+			}
+		}
+			catch(Exception e)
+			{
+				System.out.println("Archivo no encontrado");
+			}
+	}
+	
+	
 }

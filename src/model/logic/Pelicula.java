@@ -69,11 +69,8 @@ public class Pelicula
 	
 	
 	
-	public Pelicula(int pID, int pPresupuesto, String pImdb_Id, String pIdiomaOriginal, String pTituloOriginal, String pResumen, String pPopularidad,
-			String pProductora, Date pFechaEstreno, int pGanancia, int pTiempoReproduccion, String pIdiomasHablados, String pEstado,
-			String pTagline,double pPromedioVotos,int pCuentaVotos, int pNumeroCompaniaProductora, int pNumeroCompaniaPaises, int pNumeroIdiomasHablados
-			)
-	
+	public Pelicula (int pID, int pPresupuesto, String pImdb_Id, String pIdiomaOriginal, String pTituloOriginal, String pResumen, String pPopularidad,String pProductora, Date pFechaEstreno, int pGanancia, int pTiempoReproduccion, String pIdiomasHablados, String pEstado,String pTagline, double pPromedioVotos,int pCuentaVotos, int pNumeroCompaniaProductora, int pNumeroCompaniaPaises, int pNumeroIdiomasHablados)
+	{
 	
 		iD=pID;
 	
