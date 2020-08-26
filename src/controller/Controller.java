@@ -37,6 +37,7 @@ public class Controller {
 		
 		Comparable respuesta;
 		boolean fin = false;
+		Modelo actores=null;
 
 		while( !fin ){
 			view.printMenu();
@@ -47,7 +48,7 @@ public class Controller {
 					view.printMessage("--------- \n Encontrar peliculas buenas de un director ");
 					view.printMessage("--------- \n Nombre del director: ");
 					String nombreDelDirector = lector.next();
-				    respuesta = leerTexto(nombreDelDirector);
+				    respuesta = actores.PeliculasDeDirectores(nombreDelDirector);
 				    if ( respuesta != null )
 				    {
 				    	view.printMessage("--------- \n Lista de peliculas: " + "\n" + respuesta);
@@ -62,32 +63,4 @@ public class Controller {
 		
 	}	
 	
-	public String leerTexto(String palabra)
-	{
-		try
-		{
-			FileReader archivo = new FileReader("./Autores1.csv");
-			BufferedReader leer = new BufferedReader( archivo );
-			String cadena = null;
-			
-			while((cadena=leer.readLine()) != null)
-			{
-				String [] Palabras = cadena.split(";");
-				if (Palabras[1].equals(palabra))
-				{
-					int calificacion = Integer.parseInt( Palabras[3] );
-					
-					if(calificacion>=7)
-					{
-					System.out.println( " " + Palabras[0] + " \n " + Palabras[2] + " \n " + Palabras[4] + " \n " + Palabras[5] + " \n " + Palabras[6] + " \n " + Palabras[7] + " \n " + Palabras[8] + " \n " + Palabras[9] );
-					}
-				}
-			}
-		}
-		catch(Exception e)
-		{
-			System.out.println("Archivo no encontrado");
-		}
-		return "";
-	}
 }
