@@ -1,1 +1,3 @@
-Juan Felipe Caraballo - 3 semestre - 201923741
+Juan Felipe Caraballo 201923741
+Santiago Diaz Moreno 201912247
+Juan Pablo Junco 
