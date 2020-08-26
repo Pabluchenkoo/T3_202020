@@ -1,5 +1,11 @@
 package controller;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import model.logic.Modelo;
@@ -26,9 +32,9 @@ public class Controller {
 	public void run() 
 	{
 		Scanner lector = new Scanner(System.in);
+		
+		Comparable respuesta;
 		boolean fin = false;
-		Integer dato;
-		Integer respuesta;
 
 		while( !fin ){
 			view.printMenu();
@@ -36,62 +42,15 @@ public class Controller {
 			int option = lector.nextInt();
 			switch(option){
 				case 1:
-					view.printMessage("--------- \nCrear Arreglo \nDar capacidad inicial del arreglo: ");
-				    int capacidad = lector.nextInt();
-				    modelo = new Modelo(capacidad); 
-				    view.printMessage("Arreglo Dinamico creado");
-				    view.printMessage("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
-					break;
-
-				case 2:
-					view.printMessage("--------- \nDar cadena (simple) a ingresar: ");
-					dato = lector.nextInt();
-					modelo.agregar(dato);
-					view.printMessage("Dato agregado");
-					view.printMessage("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
-					break;
-
-				case 3:
-					view.printMessage("--------- \nDar cadena (simple) a buscar: ");
-					dato = lector.nextInt();
-					respuesta = (Integer) modelo.buscar(dato);
-					if ( respuesta != null)
-					{
-						view.printMessage("Dato encontrado: "+ respuesta);
-					}
-					else
-					{
-						view.printMessage("Dato NO encontrado");
-					}
-					view.printMessage("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
-					break;
-
-				case 4:
-					view.printMessage("--------- \nDar cadena (simple) a eliminar: ");
-					dato = lector.nextInt();
-					respuesta = (Integer) modelo.eliminar(dato);
-					if ( respuesta != null)
-					{
-						view.printMessage("Dato eliminado "+ respuesta);
-					}
-					else
-					{
-						view.printMessage("Dato NO eliminado");							
-					}
-					view.printMessage("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
-					break;
-
-				case 5: 
-					view.printMessage("--------- \nContenido del Arreglo: ");
-					view.printModelo(modelo);
-					view.printMessage("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
-					break;	
-					
-				case 6: 
-					view.printMessage("--------- \n Hasta pronto !! \n---------"); 
-					lector.close();
-					fin = true;
-					break;	
+					view.printMessage("--------- \n Encontrar peliculas buenas de un director ");
+					view.printMessage("--------- \n Nombre del director: ");
+					String nombreDelDirector = lector.next();
+				    respuesta = leerTexto(nombreDelDirector);
+				    if ( respuesta != null )
+				    {
+				    	view.printMessage("--------- \n Lista de peliculas: " + "\n" + respuesta);
+				    }
+				    else view.printMessage("--------- \n No se encuentra el director. ");
 
 				default: 
 					view.printMessage("--------- \n Opcion Invalida !! \n---------");
@@ -100,4 +59,33 @@ public class Controller {
 		}
 		
 	}	
+	
+	public String leerTexto(String palabra)
+	{
+		try
+		{
+			FileReader archivo = new FileReader("Autores1.csv");
+			BufferedReader leer = new BufferedReader( archivo );
+			String cadena = null;
+			
+			while((cadena=leer.readLine()) != null)
+			{
+				String [] Palabras = cadena.split(";");
+				if (Palabras[1].equals(palabra))
+				{
+					int calificacion = Integer.parseInt( Palabras[3] );
+					
+					if(calificacion>=7)
+					{
+					System.out.println( " " + Palabras[0] + " \n " + Palabras[2] + " \n " + Palabras[4] + " \n " + Palabras[5] + " \n " + Palabras[6] + " \n " + Palabras[7] + " \n " + Palabras[8] + " \n " + Palabras[9] );
+					}
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			
+		}
+		return "";
+	}
 }
