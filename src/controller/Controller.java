@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.sun.xml.internal.ws.api.message.Message;
+
 import model.logic.Modelo;
 import view.View;
 
@@ -84,7 +86,7 @@ public class Controller {
 		}
 		catch(Exception e)
 		{
-			
+			System.out.println("Archivo no encontrado");
 		}
 		return "";
 	}
