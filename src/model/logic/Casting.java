@@ -2,7 +2,7 @@ package model.logic;
 
 public class Casting {
 	
-	private int iD;
+	private Pelicula iD;
 	private String nombreActor1;
 	private String generoActor1;
 	private String nombreActor2;
@@ -27,10 +27,10 @@ public class Casting {
 	
 	
 	
-	public int dariD() {
+	public Pelicula dariD() {
 		return iD;
 	}
-	public void cambiariD(int iD) {
+	public void cambiariD(Pelicula iD) {
 		this.iD = iD;
 	}
 	public String darNombreActor1() {
