@@ -7,7 +7,7 @@ package model.data_structures;
  * @author Fernando De la Rosa
  *
  */
-public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinamico {
+public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		/**
 		 * Capacidad maxima del arreglo
 		 */
@@ -19,7 +19,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinami
         /**
          * Arreglo de elementos de tamaNo maximo
          */
-        private Object elementos[ ];
+        private T elementos[ ];
 
         /**
          * Construir un arreglo con la capacidad maxima inicial.
@@ -27,18 +27,18 @@ public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinami
          */
 		public ArregloDinamico( int max )
         {
-               elementos = new Object[max];
+               elementos = (T[]) new Object[max];
                tamanoMax = max;
                tamanoAct = 0;
         }
         
-		public void agregar( Object dato )
+		public void agregar( T dato )
         {
                if ( tamanoAct == tamanoMax )
                {  // caso de arreglo lleno (aumentar tamaNo)
                     tamanoMax = 2 * tamanoMax;
-                    Object [ ] copia = elementos;
-                    elementos = new Object[tamanoMax];
+                    T [ ] copia = elementos;
+                    elementos = (T[]) new Object[tamanoMax];
                     for ( int i = 0; i < tamanoAct; i++)
                     {
                      	 elementos[i] = copia[i];
@@ -57,7 +57,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinami
 			return tamanoAct;
 		}
 
-		public Object darElemento(int i) {
+		public T darElemento(int i) {
 			// TODO implementar
 			if(i<0 || i>=tamanoAct){
 				return null;
@@ -67,7 +67,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinami
 			
 		}
 
-		public Object buscar(Object dato) {
+		public T buscar(Object dato) {
 			// TODO implementar
 			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
 			
@@ -81,7 +81,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinami
 			return null;
 		}
 
-		public Object eliminar(Object dato) {
+		public Object eliminar(T dato) {
 			// TODO implementar
 			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
 			boolean bandera = true;
@@ -96,6 +96,238 @@ public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinami
 					}
 			}
 			return respuesta;
+		}
+		
+		
+		////////
+		public void addFirst(T element){
+			
+			tamanoAct++;
+			T [] copia;
+			
+			copia =(T []) new  Object [tamanoAct];
+			
+			copia[0] = element;
+			
+			for(int i=0; i<elementos.length;i++){
+				copia[i+1]=elementos[i];
+			}
+			
+			elementos = copia;
+		}
+
+		@Override
+		public void addLast(T element) {
+			
+			tamanoAct++;
+			
+			T [] copia;
+			
+			copia =(T []) new  Object [tamanoAct];
+			
+			
+			
+			for(int i=0; i<elementos.length;i++){
+				copia[i]=elementos[i];
+			}
+			
+			copia[tamanoAct] = element;
+			
+			elementos = copia;
+			
+		}
+
+		@Override
+		public void insertElement(T element, int pos) {
+			
+			tamanoAct++;
+			
+			T [] copia;
+			
+			copia =(T []) new  Object [tamanoAct];
+			
+			copia[pos] = element;
+			
+			for(int i=0; i<pos;i++){
+				copia[i]=elementos[i];
+			}
+			
+			for (int i = pos; i < elementos.length; i++) {
+				copia[i]=elementos[i];
+			}
+			
+			
+			
+			elementos = copia;
+			
+			
+		}
+
+		@Override
+		public T removeFirst() {
+			
+			if(elementos.length == 0){
+				
+				return null;
+			
+			}else{
+				
+				tamanoAct--;
+				
+				T [] copia;
+				
+				copia =(T []) new  Object [tamanoAct];
+				
+				T buscado = elementos[0];
+				
+				for(int i=1; i<elementos.length;i++){
+					copia[i-1]=elementos[i];
+				}
+				
+				elementos = copia;
+				
+				return buscado;
+			}
+		}
+
+		@Override
+		public T removeLast() {
+			
+			if(elementos.length == 0){
+				
+				return null;
+			
+			}else{
+				
+				tamanoAct--;
+				
+				T [] copia;
+				
+				copia =(T []) new  Object [tamanoAct];
+				
+				T buscado = elementos[tamanoAct];
+				
+				for(int i=0; i<elementos.length-1 ;i++){
+					copia[i]=elementos[i];
+				}
+				
+				elementos = copia;
+				
+				return buscado;
+			}
+		
+		}
+
+		@Override
+		public T deleteElement(int pos) {
+			
+			if(elementos.length == 0 || elementos.length < pos){
+				
+				return null;
+			
+			}else{
+				
+				tamanoAct--;
+				
+				T [] copia;
+				
+				copia =(T []) new  Object [tamanoAct];
+				
+				T buscado = elementos[pos];
+				
+				for(int i=0; i<pos ;i++){
+					copia[i]=elementos[i];
+				}
+				
+				for (int i = pos; i < elementos.length; i++) {
+					copia[i]=elementos[i];
+				}
+				
+				elementos = copia;
+				
+				return buscado;
+			}
+		}
+
+		@Override
+		public T firstElement() {
+			
+			if(elementos.length == 0){
+				return null;
+			}
+			else{
+				return elementos[0];
+			}
+		}
+
+		@Override
+		public T lastElement() {
+			
+			if(elementos.length == 0){
+				return null;
+			}
+			else{
+				return elementos[tamanoAct-1];
+			}
+		}
+
+		@Override
+		public T getElement(int pos) {
+			
+			if(elementos.length == 0){
+				return null;
+			}
+			else{
+				return elementos[pos];
+			}
+		}
+
+		@Override
+		public int size() {
+			
+			return tamanoAct;
+		}
+
+		@Override
+		public boolean isEmpty() {
+			
+			if(tamanoAct > 0){
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+
+		@Override
+		public int isPresent(T element) {
+			for (int i = 0; i < elementos.length; i++) {
+				
+				if(elementos[i] == element){
+					return i;
+				}
+			}
+			return -1;
+		}
+
+		@Override
+		public void exchange(int pos1, int pos2) {
+			
+			T copia;
+			
+			copia = elementos[pos1];
+			
+			elementos[pos1] = elementos[pos2];
+			
+			elementos[pos2] = copia;
+			
+		}
+
+		@Override
+		public void changeInfo(int pos, T elem) {
+			
+			elementos[pos] = elem;
+			
 		}
 
 		
