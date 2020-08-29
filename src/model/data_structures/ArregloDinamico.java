@@ -97,6 +97,238 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 			}
 			return respuesta;
 		}
+		
+		
+		////////
+		public void addFirst(T element){
+			
+			tamanoAct++;
+			T [] copia;
+			
+			copia =(T []) new  Object [tamanoAct];
+			
+			copia[0] = element;
+			
+			for(int i=0; i<elementos.length;i++){
+				copia[i+1]=elementos[i];
+			}
+			
+			elementos = copia;
+		}
+
+		@Override
+		public void addLast(T element) {
+			
+			tamanoAct++;
+			
+			T [] copia;
+			
+			copia =(T []) new  Object [tamanoAct];
+			
+			
+			
+			for(int i=0; i<elementos.length;i++){
+				copia[i]=elementos[i];
+			}
+			
+			copia[tamanoAct] = element;
+			
+			elementos = copia;
+			
+		}
+
+		@Override
+		public void insertElement(T element, int pos) {
+			
+			tamanoAct++;
+			
+			T [] copia;
+			
+			copia =(T []) new  Object [tamanoAct];
+			
+			copia[pos] = element;
+			
+			for(int i=0; i<pos;i++){
+				copia[i]=elementos[i];
+			}
+			
+			for (int i = pos; i < elementos.length; i++) {
+				copia[i]=elementos[i];
+			}
+			
+			
+			
+			elementos = copia;
+			
+			
+		}
+
+		@Override
+		public T removeFirst() {
+			
+			if(elementos.length == 0){
+				
+				return null;
+			
+			}else{
+				
+				tamanoAct--;
+				
+				T [] copia;
+				
+				copia =(T []) new  Object [tamanoAct];
+				
+				T buscado = elementos[0];
+				
+				for(int i=1; i<elementos.length;i++){
+					copia[i-1]=elementos[i];
+				}
+				
+				elementos = copia;
+				
+				return buscado;
+			}
+		}
+
+		@Override
+		public T removeLast() {
+			
+			if(elementos.length == 0){
+				
+				return null;
+			
+			}else{
+				
+				tamanoAct--;
+				
+				T [] copia;
+				
+				copia =(T []) new  Object [tamanoAct];
+				
+				T buscado = elementos[tamanoAct];
+				
+				for(int i=0; i<elementos.length-1 ;i++){
+					copia[i]=elementos[i];
+				}
+				
+				elementos = copia;
+				
+				return buscado;
+			}
+		
+		}
+
+		@Override
+		public T deleteElement(int pos) {
+			
+			if(elementos.length == 0 || elementos.length < pos){
+				
+				return null;
+			
+			}else{
+				
+				tamanoAct--;
+				
+				T [] copia;
+				
+				copia =(T []) new  Object [tamanoAct];
+				
+				T buscado = elementos[pos];
+				
+				for(int i=0; i<pos ;i++){
+					copia[i]=elementos[i];
+				}
+				
+				for (int i = pos; i < elementos.length; i++) {
+					copia[i]=elementos[i];
+				}
+				
+				elementos = copia;
+				
+				return buscado;
+			}
+		}
+
+		@Override
+		public T firstElement() {
+			
+			if(elementos.length == 0){
+				return null;
+			}
+			else{
+				return elementos[0];
+			}
+		}
+
+		@Override
+		public T lastElement() {
+			
+			if(elementos.length == 0){
+				return null;
+			}
+			else{
+				return elementos[tamanoAct-1];
+			}
+		}
+
+		@Override
+		public T getElement(int pos) {
+			
+			if(elementos.length == 0){
+				return null;
+			}
+			else{
+				return elementos[pos];
+			}
+		}
+
+		@Override
+		public int size() {
+			
+			return tamanoAct;
+		}
+
+		@Override
+		public boolean isEmpty() {
+			
+			if(tamanoAct > 0){
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+
+		@Override
+		public int isPresent(T element) {
+			for (int i = 0; i < elementos.length; i++) {
+				
+				if(elementos[i] == element){
+					return i;
+				}
+			}
+			return -1;
+		}
+
+		@Override
+		public void exchange(int pos1, int pos2) {
+			
+			T copia;
+			
+			copia = elementos[pos1];
+			
+			elementos[pos1] = elementos[pos2];
+			
+			elementos[pos2] = copia;
+			
+		}
+
+		@Override
+		public void changeInfo(int pos, T elem) {
+			
+			elementos[pos] = elem;
+			
+		}
 
 		
 
