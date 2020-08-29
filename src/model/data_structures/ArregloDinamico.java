@@ -233,13 +233,13 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 				
 				copia =(T []) new  Object [tamanoAct];
 				
-				T buscado = elementos[pos];
+				T buscado = elementos[pos-1];
 				
-				for(int i=0; i<pos ;i++){
+				for(int i=0; i<pos-1 ;i++){
 					copia[i]=elementos[i];
 				}
 				
-				for (int i = pos; i < elementos.length; i++) {
+				for (int i = pos-1; i < elementos.length; i++) {
 					copia[i]=elementos[i];
 				}
 				
@@ -278,7 +278,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 				return null;
 			}
 			else{
-				return elementos[pos];
+				return elementos[pos-1];
 			}
 		}
 
@@ -315,18 +315,18 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 			
 			T copia;
 			
-			copia = elementos[pos1];
+			copia = elementos[pos1-1];
 			
-			elementos[pos1] = elementos[pos2];
+			elementos[pos1-1] = elementos[pos2-1];
 			
-			elementos[pos2] = copia;
+			elementos[pos2-1] = copia;
 			
 		}
 
 		@Override
 		public void changeInfo(int pos, T elem) {
 			
-			elementos[pos] = elem;
+			elementos[pos-1] = elem;
 			
 		}
 
