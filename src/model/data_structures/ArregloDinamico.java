@@ -7,7 +7,7 @@ package model.data_structures;
  * @author Fernando De la Rosa
  *
  */
-public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinamico {
+public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		/**
 		 * Capacidad maxima del arreglo
 		 */
@@ -19,7 +19,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinami
         /**
          * Arreglo de elementos de tamaNo maximo
          */
-        private Object elementos[ ];
+        private T elementos[ ];
 
         /**
          * Construir un arreglo con la capacidad maxima inicial.
@@ -27,18 +27,18 @@ public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinami
          */
 		public ArregloDinamico( int max )
         {
-               elementos = new Object[max];
+               elementos = (T[]) new Object[max];
                tamanoMax = max;
                tamanoAct = 0;
         }
         
-		public void agregar( Object dato )
+		public void agregar( T dato )
         {
                if ( tamanoAct == tamanoMax )
                {  // caso de arreglo lleno (aumentar tamaNo)
                     tamanoMax = 2 * tamanoMax;
-                    Object [ ] copia = elementos;
-                    elementos = new Object[tamanoMax];
+                    T [ ] copia = elementos;
+                    elementos = (T[]) new Object[tamanoMax];
                     for ( int i = 0; i < tamanoAct; i++)
                     {
                      	 elementos[i] = copia[i];
@@ -57,7 +57,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinami
 			return tamanoAct;
 		}
 
-		public Object darElemento(int i) {
+		public T darElemento(int i) {
 			// TODO implementar
 			if(i<0 || i>=tamanoAct){
 				return null;
@@ -67,7 +67,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinami
 			
 		}
 
-		public Object buscar(Object dato) {
+		public T buscar(Object dato) {
 			// TODO implementar
 			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
 			
@@ -81,7 +81,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinami
 			return null;
 		}
 
-		public Object eliminar(Object dato) {
+		public Object eliminar(T dato) {
 			// TODO implementar
 			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
 			boolean bandera = true;
