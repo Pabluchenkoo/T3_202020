@@ -19,7 +19,7 @@ public class Modelo {
 	/**
 	 * Arreglo dinamico a llenar de peliculas
 	 */
-	private ArregloDinamico peliculas
+	private ArregloDinamico peliculas;
 	
 	/**
 	 * Constructor del modelo del mundo con capacidad predefinida
@@ -27,6 +27,7 @@ public class Modelo {
 	public Modelo()
 	{
 		datos = new ArregloDinamico(7);
+		peliculas = new ArregloDinamico(329044);
 	}
 	
 	/**
