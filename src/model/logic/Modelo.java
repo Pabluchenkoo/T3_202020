@@ -14,7 +14,12 @@ public class Modelo {
 	/**
 	 * Atributos del modelo del mundo
 	 */
-	private IArregloDinamico datos;
+	private ArregloDinamico datos;
+	
+	/**
+	 * Arreglo dinamico a llenar de peliculas
+	 */
+	private ArregloDinamico peliculas
 	
 	/**
 	 * Constructor del modelo del mundo con capacidad predefinida
