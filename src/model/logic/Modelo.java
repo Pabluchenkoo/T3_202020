@@ -177,7 +177,7 @@ public class Modelo {
 		
 		try
 		{
-			File f = new File ("./esqueleto_T0_202010/pruebapelicula.csv");
+			File f = new File ("./AllMoviesDetails.csv");
 			
 			FileReader archiv = new FileReader(f);
 			BufferedReader leer = new BufferedReader( archiv );
@@ -189,7 +189,7 @@ public class Modelo {
 			    	cadena=leer.readLine();
 			    }
 			    catch(Exception e){
-			    	System.out.println("Archivo no encont");
+			    	System.out.println("Archivo no encontrado");
 			    }
 				
 				String [] data = cadena.split(";");
