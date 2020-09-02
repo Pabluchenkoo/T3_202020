@@ -198,7 +198,7 @@ public class Modelo {
 						data[7],(java.sql.Date) d,Integer.parseInt(data[9]),Integer.parseInt(data[10]),data[11],data[12],data[13],Double.parseDouble(data[14]),
 							Integer.parseInt(data[15]),Integer.parseInt(data[16]),Integer.parseInt(data[17]),Integer.parseInt(data[18]));
 				
-		        peliculas.addLast(Pelicula1);
+		        peliculas.agregarAlFinal(Pelicula1);
 				System.out.println(peliculas.size());
 		    }
 				
@@ -209,7 +209,41 @@ public class Modelo {
 			}
 	}
 	
-
+	public void leerPeliculasListaEncadenada() {
+		
+		try
+		{
+			File f = new File ("./AllMoviesDetails.csv");
+			
+			FileReader archiv = new FileReader(f);
+			BufferedReader leer = new BufferedReader( archiv );
+			String cadena = null;
+			
+			for(int i=0; i<329045;i++)
+			{   
+			    try{
+			    	cadena=leer.readLine();
+			    }
+			    catch(Exception e){
+			    	System.out.println("Archivo no encontrado");
+			    }
+				
+				String [] data = cadena.split(";");
+				Date d = new Date(data[8]);
+				Pelicula Pelicula1 = new Pelicula(Integer.parseInt(data[0]),Integer.parseInt(data[1]),data[2],data[3],data[4],data[5],data[6],
+						data[7],(java.sql.Date) d,Integer.parseInt(data[9]),Integer.parseInt(data[10]),data[11],data[12],data[13],Double.parseDouble(data[14]),
+							Integer.parseInt(data[15]),Integer.parseInt(data[16]),Integer.parseInt(data[17]),Integer.parseInt(data[18]));
+				
+		        peliculas.agregarAlFinal(Pelicula1);
+				System.out.println(peliculas.size());
+		    }
+				
+		}
+			catch(Exception e)
+			{
+				System.out.println("Archivo no encontrado..");
+			}
+	}
 	
 	
 	
