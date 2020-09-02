@@ -7,13 +7,13 @@ public interface ILista <T extends Comparable<T>>
 	
 	/** Agrega un elemento al inicio de la lista */
 	
-	void addFirst(T element);
+	void agregarPrimero(T element);
 	
 	
 	
 	/** Agrega un elemento al final de la lista */
 	
-	void addLast(T element);
+	void agregarAlFinal(T element);
 	
 	
 	
@@ -24,66 +24,70 @@ public interface ILista <T extends Comparable<T>>
 	elemento en la lista. La posición del primer elemento es 1,
 	la del segundo es 2 y así sucesivamente. */
 	
-	void insertElement(T element, int pos);
+	void insertarElemento(T element, int pos);
 	
 	
 	
 	/** Elimina el primer elemento. Se retorna el elemento
 	eliminado. */
 	
-	T removeFirst( ) ;
+	T removerPrimero( ) ;
 	
 	
 	
 	/** Elimina el último elemento. Se retorna el elemento
   	eliminado. */
 	
-	T removeLast( );
+	T RemoverUltimo( );
 	
 	
 	/** Elimina el elemento de una posición válida. Se retorna el
 	elemento eliminado */
 	
-	T deleteElement( int pos);
+	T borrarElemento( int pos);
 	
 	/** Retorna el primer elemento */
 	
-	T firstElement( );
+	T PrimerElemento( );
 	
 	
 	/** Retorna el último elemento */
 	
-	T lastElement() ;
+	T ultimoElemento() ;
 	
 	/** Retorna el elemento en una posición válida. La posición del
 	primer elemento es 1, la del segundo es 2 y así
 	sucesivamente. */
 	
-	T getElement( int pos);
+	T obtenerElemento( int pos);
 	
 	/** Retorna el número de datos en el arreglo **/
 	
-	int size( );
+	int tamanio( );
 	
 	/** Retorna true si el arreglo No tiene datos. false en caso
 	contrario. */
 	
-	boolean isEmpty( );
+	boolean esVacio( );
 	
 	/** Retorna la posición válida de un elemento. Si no se
 	encuentra el elemento, el valor retornado es -1. */
 	
-	int isPresent (T element);
+	int estaPresente (T element);
 	
 	
 	/** Intercambia la información de los elementos en dos
 	posiciones válidas. */
 	
-	void exchange (int pos1, int pos2);
+	void intercambiar (int pos1, int pos2);
 	
 	/** Actualiza el elemento en una posición válida. */
 	
-	void changeInfo (int pos, T elem) ;
+	void cambiarInformacion (int pos, T elem) ;
+
+
+
+	T obtenerElemento(T elem);
 	
 	
 	

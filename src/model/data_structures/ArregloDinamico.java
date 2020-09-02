@@ -100,7 +100,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		
 		
 		////////
-		public void addFirst(T element){
+		public void agregarPrimero(T element){
 			
 			tamanoAct++;
 			T [] copia;
@@ -117,7 +117,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		}
 
 		@Override
-		public void addLast(T element) {
+		public void agregarAlFinal(T element) {
 			
 			tamanoAct++;
 			
@@ -138,7 +138,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		}
 
 		@Override
-		public void insertElement(T element, int pos) {
+		public void insertarElemento(T element, int pos) {
 			
 			tamanoAct++;
 			
@@ -164,7 +164,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		}
 
 		@Override
-		public T removeFirst() {
+		public T removerPrimero() {
 			
 			if(elementos.length == 0){
 				
@@ -191,7 +191,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		}
 
 		@Override
-		public T removeLast() {
+		public T RemoverUltimo() {
 			
 			if(elementos.length == 0){
 				
@@ -219,7 +219,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		}
 
 		@Override
-		public T deleteElement(int pos) {
+		public T borrarElemento(int pos) {
 			
 			if(elementos.length == 0 || elementos.length < pos){
 				
@@ -250,7 +250,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		}
 
 		@Override
-		public T firstElement() {
+		public T PrimerElemento() {
 			
 			if(elementos.length == 0){
 				return null;
@@ -261,7 +261,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		}
 
 		@Override
-		public T lastElement() {
+		public T ultimoElemento() {
 			
 			if(elementos.length == 0){
 				return null;
@@ -272,7 +272,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		}
 
 		@Override
-		public T getElement(int pos) {
+		public T obtenerElemento(int pos) {
 			
 			if(elementos.length == 0){
 				return null;
@@ -283,13 +283,13 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		}
 
 		@Override
-		public int size() {
+		public int tamanio() {
 			
 			return tamanoAct;
 		}
 
 		@Override
-		public boolean isEmpty() {
+		public boolean esVacio() {
 			
 			if(tamanoAct > 0){
 				return false;
@@ -300,7 +300,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		}
 
 		@Override
-		public int isPresent(T element) {
+		public int estaPresente(T element) {
 			for (int i = 0; i < elementos.length; i++) {
 				
 				if(elementos[i] == element){
@@ -311,7 +311,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		}
 
 		@Override
-		public void exchange(int pos1, int pos2) {
+		public void intercambiar(int pos1, int pos2) {
 			
 			T copia;
 			
@@ -324,7 +324,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		}
 
 		@Override
-		public void changeInfo(int pos, T elem) {
+		public void cambiarInformacion(int pos, T elem) {
 			
 			elementos[pos-1] = elem;
 			

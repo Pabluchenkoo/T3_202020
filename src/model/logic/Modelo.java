@@ -19,7 +19,7 @@ public class Modelo {
 	/**
 	 * Arreglo dinamico a llenar de peliculas
 	 */
-	private ArregloDinamico peliculas
+	private ArregloDinamico peliculas;
 	
 	/**
 	 * Constructor del modelo del mundo con capacidad predefinida
@@ -130,6 +130,7 @@ public class Modelo {
 				System.out.println("Archivo no encontrado");
 			}
 	}
+	
 	
 	
 }
