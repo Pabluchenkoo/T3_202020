@@ -36,6 +36,7 @@ public class Modelo {
 	public Modelo()
 	{
 		datos = new ArregloDinamico(7);
+		peliculas = new ArregloDinamico(329045);
 	}
 	
 	/**

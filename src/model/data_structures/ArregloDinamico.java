@@ -330,6 +330,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 			
 		}
 
+<<<<<<< HEAD
 		public char[] size() {
 			// TODO Auto-generated method stub
 			return null;
@@ -338,6 +339,16 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		@Override
 		public T obtenerElemento(T elem) {
 			// TODO Auto-generated method stub
+=======
+		@Override
+		public T obtenerElemento(T elem) {
+			for (int i = 0; i < elementos.length; i++) {
+				if(elementos[i]==elem){
+					return elementos[i];
+				}
+			}
+			
+>>>>>>> 3c8b69d95965115990faa2d6e5ee27c5cbd240a3
 			return null;
 		}
 
