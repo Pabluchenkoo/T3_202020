@@ -45,19 +45,18 @@ public class Controller {
 			int option = lector.nextInt();
 			switch(option){
 				case 1:
-					view.printMessage("--------- \n Encontrar peliculas buenas de un director ");
-					view.printMessage("--------- \n Nombre del director: ");
-					String nombreDelDirector = lector.next();
-				    respuesta = actores.PeliculasDeDirectores(nombreDelDirector);
-				    if ( respuesta != null )
-				    {
-				    	view.printMessage("--------- \n Lista de peliculas: " + "\n" + respuesta);
-				    }
-				    else view.printMessage("--------- \n No se encuentra el director. ");
-
+					
+				case 2:
+					modelo.leerPeliculasArregloDinamico();
+				case 3:
+					modelo.peliculasConPeorPromedio();
+					
+				
 				default: 
 					view.printMessage("--------- \n Opcion Invalida !! \n---------");
 					break;
+					
+					
 			}
 		}
 		

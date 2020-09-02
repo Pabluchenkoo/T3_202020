@@ -14,12 +14,9 @@ public class View
 	    
 		public void printMenu()
 		{
-			System.out.println("1. Crear Arreglo Dinamico de Strings");
-			System.out.println("2. Agregar String");
-			System.out.println("3. Buscar String");
-			System.out.println("4. Eliminar String");
-			System.out.println("5. Imprimir el Arreglo");
-			System.out.println("6. Exit");
+			System.out.println("Opción 1: Realizar la carga de las fuentes de datos de las películas a una lista encadenada");
+			System.out.println("Opción 2: Realizar la carga de las fuentes de datos de las películas a un arreglo dinámico.");
+		    System.out.println("Opción 3: Resolver parciamente el requerimiento 2 del Reto 1 usando el algoritmo ShellSort");
 			System.out.println("Dar el numero de opcion a resolver, luego oprimir tecla Return: (e.g., 1):");
 		}
 

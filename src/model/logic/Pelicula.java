@@ -4,7 +4,7 @@ import java.sql.Date;
 import model.data_structures.ArregloDinamico;
 import model.data_structures.IArregloDinamico;
 
-public class Pelicula 
+public class Pelicula implements Comparable 
 {
 	private int iD;
 	
@@ -312,6 +312,7 @@ public class Pelicula
 	public void cambiarTituloOriginal(String tituloOriginal) {
 		this.tituloOriginal = tituloOriginal;
 	}
+<<<<<<< HEAD
 	
 	public  Pelicula darSiguiente()
 	{
@@ -338,5 +339,26 @@ public class Pelicula
 	{
 		peli.siguiente = siguiente;
 		siguiente = peli;
+=======
+
+
+
+	public int compareTo(Pelicula p1) {
+		
+		if (this.darPromedioVotos() > p1.darPromedioVotos()){
+			
+			return 1;
+		
+		}else if(this.darPromedioVotos() == p1.darPromedioVotos()){
+		
+			return 0;
+		
+		}else{
+			
+			return -1;
+		}
+		
+		
+>>>>>>> cde05986e95c02251a75a7c396f769437fdd4da3
 	}
 }
