@@ -122,6 +122,7 @@ public class ListaEncadenada <T extends Comparable<T>> implements ILista<T>
 	{
 		// TODO Auto-generated method stub
 		
+		
 		return null;
 	}
 

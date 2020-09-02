@@ -32,7 +32,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
                tamanoAct = 0;
         }
         
-		public void agregar( T dato )
+		public void agregar( Object dato )
         {
                if ( tamanoAct == tamanoMax )
                {  // caso de arreglo lleno (aumentar tamaNo)
@@ -81,7 +81,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 			return null;
 		}
 
-		public Object eliminar(T dato) {
+		public Object eliminar(Object dato) {
 			// TODO implementar
 			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
 			boolean bandera = true;
@@ -328,6 +328,17 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 			
 			elementos[pos-1] = elem;
 			
+		}
+
+		public char[] size() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public T obtenerElemento(T elem) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 
 		

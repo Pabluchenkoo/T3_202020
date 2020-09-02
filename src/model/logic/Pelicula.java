@@ -312,7 +312,7 @@ public class Pelicula implements Comparable
 	public void cambiarTituloOriginal(String tituloOriginal) {
 		this.tituloOriginal = tituloOriginal;
 	}
-<<<<<<< HEAD
+
 	
 	public  Pelicula darSiguiente()
 	{
@@ -339,7 +339,7 @@ public class Pelicula implements Comparable
 	{
 		peli.siguiente = siguiente;
 		siguiente = peli;
-=======
+	}
 
 
 
@@ -359,6 +359,23 @@ public class Pelicula implements Comparable
 		}
 		
 		
->>>>>>> cde05986e95c02251a75a7c396f769437fdd4da3
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

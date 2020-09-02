@@ -10,6 +10,7 @@ import java.util.Date;
 
 import model.data_structures.ArregloDinamico;
 import model.data_structures.IArregloDinamico;
+import model.data_structures.ListaEncadenada;
 import model.data_structures.ShellSort;
 
 /**
@@ -26,6 +27,8 @@ public class Modelo {
 	 * Arreglo dinamico a llenar de peliculas
 	 */
 	private ArregloDinamico peliculas;
+	
+	private ListaEncadenada peliculasLE;
 	
 	/**
 	 * Constructor del modelo del mundo con capacidad predefinida
@@ -234,8 +237,8 @@ public class Modelo {
 						data[7],(java.sql.Date) d,Integer.parseInt(data[9]),Integer.parseInt(data[10]),data[11],data[12],data[13],Double.parseDouble(data[14]),
 							Integer.parseInt(data[15]),Integer.parseInt(data[16]),Integer.parseInt(data[17]),Integer.parseInt(data[18]));
 				
-		        peliculas.agregarAlFinal(Pelicula1);
-				System.out.println(peliculas.size());
+		        peliculasLE.agregarAlFinal(Pelicula1);
+				
 		    }
 				
 		}
