@@ -330,6 +330,17 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 			
 		}
 
+		@Override
+		public T obtenerElemento(T elem) {
+			for (int i = 0; i < elementos.length; i++) {
+				if(elementos[i]==elem){
+					return elementos[i];
+				}
+			}
+			
+			return null;
+		}
+
 		
 
 }
