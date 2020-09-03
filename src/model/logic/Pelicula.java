@@ -345,7 +345,11 @@ public class Pelicula implements Comparable<Pelicula>
 	{
 		peli.siguiente = siguiente;
 		siguiente = peli;
+<<<<<<< HEAD
 	}	
+=======
+	}
+>>>>>>> e9bf9de830bc0de8f7d8de9e20685bdcaf3a0a54
 
 
 
@@ -366,6 +370,26 @@ public class Pelicula implements Comparable<Pelicula>
 		
 		
 
+<<<<<<< HEAD
+=======
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
+>>>>>>> e9bf9de830bc0de8f7d8de9e20685bdcaf3a0a54
 	}
 
 

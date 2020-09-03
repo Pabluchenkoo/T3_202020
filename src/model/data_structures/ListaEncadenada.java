@@ -100,7 +100,8 @@ public class ListaEncadenada <T extends Comparable<T>> implements ILista<T>
 	{
 		// TODO Auto-generated method stub
 		
-		return null;
+		
+		return primero;
 	}
 
 	@Override
@@ -121,6 +122,7 @@ public class ListaEncadenada <T extends Comparable<T>> implements ILista<T>
 	public T obtenerElemento(T elem) 
 	{
 		// TODO Auto-generated method stub
+		
 		
 		return null;
 	}
