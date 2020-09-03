@@ -20,82 +20,66 @@ public class Modelo {
 	/**
 	 * Atributos del modelo del mundo
 	 */
-	private ArregloDinamico datos;
+	
 	
 	/**
 	 * Arreglo dinamico a llenar de peliculas
 	 */
-	private ArregloDinamico peliculas;
+	private ArregloDinamico<Pelicula> peliculas;
 	
 	/**
 	 * Constructor del modelo del mundo con capacidad predefinida
 	 */
 	public Modelo()
 	{
-		datos = new ArregloDinamico(7);
-		peliculas = new ArregloDinamico(329045);
+		
+		peliculas = new ArregloDinamico<Pelicula>(329045);
 	}
 	
 	/**
 	 * Constructor del modelo del mundo con capacidad dada
 	 * @param tamano
 	 */
-	public Modelo(Integer capacidad)
-	{
-		datos = new ArregloDinamico(capacidad);
-	}
+	
 	
 	/**
 	 * Servicio de consulta de numero de elementos presentes en el modelo 
 	 * @return numero de elementos presentes en el modelo
 	 */
-	public int darTamano()
-	{
-		return datos.darTamano();
-	}
+
 
 	/**
 	 * @return capacidad actual del modelo
 	 */
-	public int darCapacidad()
-	{
-		return datos.darCapacidad();
-	}
+
 	/**
 	 * Requerimiento de agregar dato
 	 * @param dato
 	 */
-	public void agregar(Object dato)
-	{	
-		datos.agregar(dato);
-	}
+
 	
 	/**
 	 * Requerimiento buscar dato
 	 * @param dato Dato a buscar
 	 * @return dato encontrado
 	 */
-	public Object buscar(Object dato)
-	{
-		return datos.buscar(dato);
-	}
+
 	
 	/**
 	 * Requerimiento eliminar dato
 	 * @param dato Dato a eliminar
 	 * @return dato eliminado
 	 */
-	public Object eliminar(Object dato)
-	{
-		return datos.eliminar(dato);
-	}
+
 
 	public String PeliculasDeDirectores(String palabra)
 	{
 		try
 		{
-			FileReader archivo = new FileReader("./Autores1.csv");
-			BufferedReader leer = new BufferedReader( archivo );
+		
+			
+			FileReader archivo1 = new FileReader("./Autores1.csv");
+			BufferedReader leer = new BufferedReader( archivo1 );
 			String cadena = null;
 			
 			while((cadena=leer.readLine()) != null)
@@ -168,7 +152,7 @@ public class Modelo {
 		}
 		catch(Exception e)
 		{
-			System.out.println(" No se puede reportar una respuesta al requerimiento ");
+			System.out.println(" No se puede reportar una respuesta al requerimiento... ");
 		}
 		
 	}
@@ -178,13 +162,13 @@ public class Modelo {
 		
 		try
 		{
-			File f = new File ("./AllMoviesDetails.csv");
+			File f = new File ("./data/AllMoviesDetailsCleaned.csv");
 			
 			FileReader archiv = new FileReader(f);
 			BufferedReader leer = new BufferedReader( archiv );
 			String cadena = null;
-			
-			for(int i=0; i<329045;i++)
+			leer.readLine();
+			while(leer.readLine()!= null)
 			{   
 			    try{
 			    	cadena=leer.readLine();
@@ -194,10 +178,98 @@ public class Modelo {
 			    }
 				
 				String [] data = cadena.split(";");
-				Date d = new Date(data[8]);
-				Pelicula Pelicula1 = new Pelicula(Integer.parseInt(data[0]),Integer.parseInt(data[1]),data[2],data[3],data[4],data[5],data[6],
-						data[7],(java.sql.Date) d,Integer.parseInt(data[9]),Integer.parseInt(data[10]),data[11],data[12],data[13],Double.parseDouble(data[14]),
-							Integer.parseInt(data[15]),Integer.parseInt(data[16]),Integer.parseInt(data[17]),Integer.parseInt(data[18]));
+				
+				int k = 0; 
+				
+				int iD= Integer.parseInt(data[k]);
+				k++;
+				
+				double presupuesto = Double.parseDouble(data[k]);
+				k++;
+			
+				String generos =data[k];
+				k++;
+				
+				String imdb_Id = data[k];
+			
+				k++;
+				
+				String idiomaOriginal = data[k];
+			
+				k++;
+				
+				String tituloOriginal = data[k];
+			
+				k++;
+				
+				String resumen =data[k];
+
+				k++;
+				
+				String popularidad =data[k];
+			
+				k++;
+				
+				String productora = data[k];
+			
+				k++;
+				
+				String productCompanies =data[k];
+				
+				k++;
+				
+				String productionCountries = data[k];
+				
+				k++;
+				
+				String fechaEstreno = data[k];
+			
+				k++;
+				
+				String ganancia = (data[k]);
+				
+				k++;
+			
+				String tiempoReproduccion =(data[k]);
+				
+				k++;
+			
+				String idiomasHablados = data[k];
+				
+				k++;
+				
+				String Estado = data[k];
+				
+				k++;
+				
+				String tagline = data[k];
+				
+				k++;
+				
+				String titulo =data[k];
+				k++;
+				
+				String promedioVotos = (data[k]);
+				
+				k++;
+				
+				int cuentaVotos = Integer.parseInt(data[k]);
+				
+				k++;
+				
+				int numeroCompaniaProductora = Integer.parseInt(data[k]);
+				
+				k++;
+				
+				int numeroCompaniaPaises = Integer.parseInt(data[k]);
+				
+				
+				
+				int numeroIdiomasHablados = Integer.parseInt(data[k]);
+				
+				Pelicula Pelicula1 = new Pelicula(iD,presupuesto,generos,imdb_Id,idiomaOriginal,tituloOriginal, resumen, popularidad, productora,productCompanies,productCompanies, fechaEstreno
+						,ganancia, tiempoReproduccion, idiomasHablados, Estado, tagline,titulo,promedioVotos,cuentaVotos
+						,numeroCompaniaProductora, numeroCompaniaPaises,numeroIdiomasHablados);
 				
 		        peliculas.agregarAlFinal(Pelicula1);
 				System.out.println(peliculas.size());
@@ -206,22 +278,22 @@ public class Modelo {
 		}
 			catch(Exception e)
 			{
-				System.out.println("Archivo no encontrado..");
+				e.printStackTrace();
 			}
 	}
 	
 	public void leerPeliculasListaEncadenada() {
 		
-		try
-		{
-			File f = new File ("./AllMoviesDetails.csv");
+	try{
+		
+			File f = new File ("./data/AllMoviesDetailsCleaned.csv");
 			
 			FileReader archiv = new FileReader(f);
 			BufferedReader leer = new BufferedReader( archiv );
 			String cadena = null;
 			
-			for(int i=0; i<329045;i++)
-			{   
+			while(leer.readLine()!= null)
+			{    
 			    try{
 			    	cadena=leer.readLine();
 			    }
@@ -230,10 +302,112 @@ public class Modelo {
 			    }
 				
 				String [] data = cadena.split(";");
-				Date d = new Date(data[8]);
-				Pelicula Pelicula1 = new Pelicula(Integer.parseInt(data[0]),Integer.parseInt(data[1]),data[2],data[3],data[4],data[5],data[6],
-						data[7],(java.sql.Date) d,Integer.parseInt(data[9]),Integer.parseInt(data[10]),data[11],data[12],data[13],Double.parseDouble(data[14]),
-							Integer.parseInt(data[15]),Integer.parseInt(data[16]),Integer.parseInt(data[17]),Integer.parseInt(data[18]));
+			   
+				int k = 0; 
+				
+				int iD= Integer.parseInt(data[k]);
+				k++;
+				
+				double presupuesto = Double.parseDouble(data[k]);
+				k++;
+			
+				String generos =data[k];
+				k++;
+				
+				String imdb_Id = data[k];
+			
+				k++;
+				
+				String idiomaOriginal = data[k];
+			
+				k++;
+				
+				String tituloOriginal = data[k];
+			
+				k++;
+				
+				String resumen =data[k];
+
+				k++;
+				
+				String popularidad =data[k];
+			
+				k++;
+				
+				String productora = data[k];
+			
+				k++;
+				
+				String productCompanies =data[k];
+				
+				k++;
+				
+				String productionCountries = data[k];
+				
+				k++;
+				
+				String fechaEstreno = data[k];
+			
+				k++;
+				
+				String ganancia = (data[k]);
+				
+				k++;
+			
+				String tiempoReproduccion =(data[k]);
+				
+				k++;
+			
+				String idiomasHablados = data[k];
+				
+				k++;
+				
+				String Estado = data[k];
+				
+				k++;
+				
+				String tagline = data[k];
+				
+				k++;
+				
+				String titulo =data[k];
+				k++;
+				
+				String promedioVotos = (data[k]);
+				
+				k++;
+				
+				int cuentaVotos = Integer.parseInt(data[k]);
+				
+				k++;
+				
+				int numeroCompaniaProductora = Integer.parseInt(data[k]);
+				
+				k++;
+				
+				int numeroCompaniaPaises = Integer.parseInt(data[k]);
+				
+				k++;
+				
+				int numeroIdiomasHablados = Integer.parseInt(data[k]);
+				
+				
+				
+//				Pelicula (int pID, double pPresupuesto,String generos, String pImdb_Id, String pIdiomaOriginal, 
+//						String pTituloOriginal, String pResumen, String pPopularidad,String pProductora, String productCompanies,
+//						String productionCountries,
+//						String pFechaEstreno, double pGanancia, double pTiempoReproduccion, 
+//						String pIdiomasHablados, String pEstado,String pTagline, String titulo,
+//						double pPromedioVotos,int pCuentaVotos, int pNumeroCompaniaProductora, 
+//						int pNumeroCompaniaPaises, int pNumeroIdiomasHablados)
+				
+				
+				Pelicula Pelicula1 = new Pelicula(iD,presupuesto,generos,imdb_Id,idiomaOriginal,tituloOriginal, resumen, popularidad, productora,productCompanies,productCompanies, fechaEstreno
+						,ganancia, tiempoReproduccion, idiomasHablados, Estado, tagline,titulo,promedioVotos,cuentaVotos
+						,numeroCompaniaProductora, numeroCompaniaPaises,numeroIdiomasHablados);
+						
+						
+						
 				
 		        peliculas.agregarAlFinal(Pelicula1);
 				System.out.println(peliculas.size());
@@ -242,9 +416,10 @@ public class Modelo {
 		}
 			catch(Exception e)
 			{
-				System.out.println("Archivo no encontrado..");
+				e.printStackTrace();
 			}
-	}
+	
+}
 	
 	
 	

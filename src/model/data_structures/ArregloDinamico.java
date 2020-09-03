@@ -27,7 +27,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
          */
 		public ArregloDinamico( int max )
         {
-               elementos = (T[]) new Object[max];
+               elementos = (T[]) new Comparable[max];
                tamanoMax = max;
                tamanoAct = 0;
         }
@@ -38,7 +38,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
                {  // caso de arreglo lleno (aumentar tamaNo)
                     tamanoMax = 2 * tamanoMax;
                     T [ ] copia = elementos;
-                    elementos = (T[]) new Object[tamanoMax];
+                    elementos = (T[]) new Comparable[tamanoMax];
                     for ( int i = 0; i < tamanoAct; i++)
                     {
                      	 elementos[i] = copia[i];
@@ -67,13 +67,13 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 			
 		}
 
-		public T buscar(Object dato) {
+		public T buscar(T dato) {
 			// TODO implementar
 			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
 			
 			boolean bandera = true;
 			for (int i = 0; i < elementos.length && bandera; i++) {
-					if(((Comparable<T>) elementos[i]).compareTo((T) dato)==0){
+					if(((Comparable<T>) elementos[i]).compareTo(dato)==0){
 						bandera = false;
 						return elementos[i];
 					}
@@ -99,13 +99,14 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		}
 		
 		
-		////////
+		//
+		
 		public void agregarPrimero(T element){
 			
 			tamanoAct++;
 			T [] copia;
 			
-			copia =(T []) new  Object [tamanoAct];
+			copia =(T []) new  Comparable [tamanoAct];
 			
 			copia[0] = element;
 			
@@ -123,15 +124,15 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 			
 			T [] copia;
 			
-			copia =(T []) new  Object [tamanoAct];
+			copia =(T []) new  Comparable[tamanoAct];
 			
 			
 			
-			for(int i=0; i<elementos.length;i++){
+			for(int i=0; i<tamanoAct-1;i++){
 				copia[i]=elementos[i];
 			}
 			
-			copia[tamanoAct] = element;
+			copia[tamanoAct-1] = element;
 			
 			elementos = copia;
 			
@@ -144,7 +145,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 			
 			T [] copia;
 			
-			copia =(T []) new  Object [tamanoAct];
+			copia =(T []) new  Comparable [tamanoAct];
 			
 			copia[pos] = element;
 			
@@ -176,7 +177,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 				
 				T [] copia;
 				
-				copia =(T []) new  Object [tamanoAct];
+				copia =(T []) new  Comparable [tamanoAct];
 				
 				T buscado = elementos[0];
 				
@@ -203,7 +204,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 				
 				T [] copia;
 				
-				copia =(T []) new  Object [tamanoAct];
+				copia =(T []) new  Comparable [tamanoAct];
 				
 				T buscado = elementos[tamanoAct];
 				
@@ -231,7 +232,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 				
 				T [] copia;
 				
-				copia =(T []) new  Object [tamanoAct];
+				copia =(T []) new  Comparable [tamanoAct];
 				
 				T buscado = elementos[pos-1];
 				
@@ -341,6 +342,9 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 			return null;
 		}
 
+		public int size(){
+			return tamanoAct;
+		}
 		
 
 }

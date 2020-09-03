@@ -48,10 +48,11 @@ public class Controller {
 					
 				case 2:
 					modelo.leerPeliculasArregloDinamico();
+					break;
 				case 3:
 					modelo.peliculasConPeorPromedio();
+					break;
 					
-				
 				default: 
 					view.printMessage("--------- \n Opcion Invalida !! \n---------");
 					break;

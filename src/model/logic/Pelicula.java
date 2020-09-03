@@ -4,12 +4,12 @@ import java.sql.Date;
 import model.data_structures.ArregloDinamico;
 import model.data_structures.IArregloDinamico;
 
-public class Pelicula implements Comparable 
+public class Pelicula implements Comparable<Pelicula> 
 {
 	private int iD;
 	
 	
-	private int presupuesto;
+	private double presupuesto;
 	
 	
 	private String imdb_Id;
@@ -30,13 +30,13 @@ public class Pelicula implements Comparable
 	private String productora;
 	
 	
-	private Date fechaEstreno;
+	private String fechaEstreno;
 	
 	
-	private int ganancia;
+	private String ganancia;
 	
 	
-	private int tiempoReproduccion;
+	private String tiempoReproduccion;
 	
 	
 	private String idiomasHablados;
@@ -48,7 +48,7 @@ public class Pelicula implements Comparable
 	private String tagline;
 	
 	
-	private double promedioVotos;
+	private String promedioVotos;
 	
 	
 	private int cuentaVotos;
@@ -72,7 +72,13 @@ public class Pelicula implements Comparable
 	
 	
 	
-	public Pelicula (int pID, int pPresupuesto, String pImdb_Id, String pIdiomaOriginal, String pTituloOriginal, String pResumen, String pPopularidad,String pProductora, Date pFechaEstreno, int pGanancia, int pTiempoReproduccion, String pIdiomasHablados, String pEstado,String pTagline, double pPromedioVotos,int pCuentaVotos, int pNumeroCompaniaProductora, int pNumeroCompaniaPaises, int pNumeroIdiomasHablados)
+	public Pelicula (int pID, double pPresupuesto,String generos, String pImdb_Id, String pIdiomaOriginal, 
+			String pTituloOriginal, String pResumen, String pPopularidad,String pProductora, String productCompanies,
+			String productionCountries,
+			String pFechaEstreno, String pGanancia, String pTiempoReproduccion, 
+			String pIdiomasHablados, String pEstado,String pTagline, String titulo,
+			String pPromedioVotos,int pCuentaVotos, int pNumeroCompaniaProductora, 
+			int pNumeroCompaniaPaises, int pNumeroIdiomasHablados)
 	{
 	
 		iD=pID;
@@ -159,149 +165,149 @@ public class Pelicula implements Comparable
 	
 	
 	
-	private int darId(){
+	public int darId(){
 		return iD;
 	}
 	
-	private void cambiarId(int nuevoId){
+	public void cambiarId(int nuevoId){
 		iD = nuevoId;
 	}
 	
-	private int darPresupuesto(){
+	public double darPresupuesto(){
 		return presupuesto;
 	}
 	
-	private void cambiarPresupuesto(int nuevoPresupuesto){
+	public void cambiarPresupuesto(int nuevoPresupuesto){
 		presupuesto = nuevoPresupuesto;
 	}
 	
-	private String darImdbId(){
+	public String darImdbId(){
 		return imdb_Id;
 	}
 	
-	private void cambiarImdbId(String nuevoId){
+	public void cambiarImdbId(String nuevoId){
 		imdb_Id = nuevoId;
 	}
 	
-	private String darIdiomaOriginal(){
+	public String darIdiomaOriginal(){
 		return idiomaOriginal;
 	}
 	
-	private void cambiarIdiomaOriginal(String nuevoIdioma){
+	public void cambiarIdiomaOriginal(String nuevoIdioma){
 		idiomaOriginal = nuevoIdioma;
 	}
 	
-	private String darResumen()
+	public String darResumen()
 	{
 		return resumen;
 	}
 	
-	private void cambiarResumen(String nuevoResumen){
+	public void cambiarResumen(String nuevoResumen){
 		resumen = nuevoResumen;
 	}
 	
-	private String darPopularidad(){
+	public String darPopularidad(){
 		return popularidad;
 	}
 	
-	private void cambiarPopularidad(String nuevaPopularidad){
+	public void cambiarPopularidad(String nuevaPopularidad){
 		popularidad = nuevaPopularidad;
 	}
 	
-	private String darProductora(){
+	public String darProductora(){
 		return productora;
 	}
 	
-	private void cambiarProductora(String nuevaProductora){
+	public void cambiarProductora(String nuevaProductora){
 		productora = nuevaProductora;
 	}
 	
-	private Date darFechaEstreno(){
+	public String darFechaEstreno(){
 		return fechaEstreno;
 	}
 	
-	private void cambiarFechaEstreno(Date nuevaFecha){
+	public void cambiarFechaEstreno(String nuevaFecha){
 		fechaEstreno = nuevaFecha;
 	}
 	
-	private int darGanancia(){
+	public String darGanancia(){
 		return ganancia;
 	}
 	
-	private void cambiarGanancia(int nuevaGanancia){
+	public void cambiarGanancia(String nuevaGanancia){
 		ganancia = nuevaGanancia;
 	}
 	
-	private int darTiempoReproduccion(){
+	public String darTiempoReproduccion(){
 		return tiempoReproduccion;
 	}
 	
-	private void cambiarTiempoReproduccion(int nuevoTiempo){
+	public void cambiarTiempoReproduccion(String nuevoTiempo){
 		tiempoReproduccion = nuevoTiempo;
 	}
 	
-	private String darIdiomasHablados(){
+	public String darIdiomasHablados(){
 		return idiomasHablados;
 	}
 	
-	private void cambiarIdiomasHablados(String nuevosIdiomas){
+	public void cambiarIdiomasHablados(String nuevosIdiomas){
 		idiomasHablados = nuevosIdiomas;
 	}
 	
 	
-	private String darEstado(){
+	public String darEstado(){
 		return Estado;
 	}
 	
-	private void cambiarEstado(String nuevoEstado){
+	public void cambiarEstado(String nuevoEstado){
 		Estado = nuevoEstado;
 	}
 	
-	private String darTagline(){
+	public String darTagline(){
 		return tagline;
 	}
 	
-	private void cambiarTagline(String nuevoTagline){
+	public void cambiarTagline(String nuevoTagline){
 		tagline = nuevoTagline;
 	}
 	
-	private double darPromedioVotos(){
+	public String darPromedioVotos(){
 		return promedioVotos;
 	}
 	
-	private void cambiarPromedioVotos(double nuevoPromedio){
+	public void cambiarPromedioVotos(String nuevoPromedio){
 		promedioVotos =  nuevoPromedio;
 	}
 	
-	private int darCuentaVotos(){
+	public int darCuentaVotos(){
 		return cuentaVotos;
 	}
 	
-	private void cambiarCuentaVotos(int nuevoCuenta){
+	public void cambiarCuentaVotos(int nuevoCuenta){
 		cuentaVotos = nuevoCuenta;
 	}
 	
-	private int darNumeroCompaniaProductora(){
+	public int darNumeroCompaniaProductora(){
 		return numeroCompaniaProductora;
 	}
 	
-	private void cambiaNumeroCompaniaProductora(int nuevoN){
+	public void cambiaNumeroCompaniaProductora(int nuevoN){
 		numeroCompaniaProductora = nuevoN;
 	}
 	
-	private int darNumeroCompaniaPaises(){
+	public int darNumeroCompaniaPaises(){
 		return numeroCompaniaPaises;
 	}
 	
-	private void cambiarNumeroCompaniaPaises(int nuevoN){
+	public void cambiarNumeroCompaniaPaises(int nuevoN){
 		numeroCompaniaPaises = nuevoN;
 	}
 	
-	private int darNumeroIdiomasHablados(){
+	public int darNumeroIdiomasHablados(){
 		return numeroIdiomasHablados;
 	}
 	
-	private void cambiarNumeroIdiomasHablados(int nuevoN){
+	public void cambiarNumeroIdiomasHablados(int nuevoN){
 		numeroIdiomasHablados = nuevoN;
 	}
 
@@ -312,7 +318,7 @@ public class Pelicula implements Comparable
 	public void cambiarTituloOriginal(String tituloOriginal) {
 		this.tituloOriginal = tituloOriginal;
 	}
-<<<<<<< HEAD
+
 	
 	public  Pelicula darSiguiente()
 	{
@@ -339,17 +345,17 @@ public class Pelicula implements Comparable
 	{
 		peli.siguiente = siguiente;
 		siguiente = peli;
-=======
+	}	
 
 
 
 	public int compareTo(Pelicula p1) {
 		
-		if (this.darPromedioVotos() > p1.darPromedioVotos()){
+		if (Double.parseDouble(this.darPromedioVotos()) > Double.parseDouble(p1.darPromedioVotos())){
 			
 			return 1;
 		
-		}else if(this.darPromedioVotos() == p1.darPromedioVotos()){
+		}else if(Double.parseDouble(this.darPromedioVotos()) == Double.parseDouble(p1.darPromedioVotos())){
 		
 			return 0;
 		
@@ -359,6 +365,9 @@ public class Pelicula implements Comparable
 		}
 		
 		
->>>>>>> cde05986e95c02251a75a7c396f769437fdd4da3
+
 	}
+
+
+
 }
