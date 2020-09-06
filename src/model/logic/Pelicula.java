@@ -14,6 +14,7 @@ public class Pelicula implements Comparable<Pelicula>
 	
 	private String imdb_Id;
 	
+	private String generos;
 	
 	private String idiomaOriginal;
 	
@@ -72,7 +73,7 @@ public class Pelicula implements Comparable<Pelicula>
 	private String titulo;
 	
 	
-	public Pelicula (int pID, double pPresupuesto,String generos, String pImdb_Id, String pIdiomaOriginal, 
+	public Pelicula (int pID, double pPresupuesto,String pgeneros, String pImdb_Id, String pIdiomaOriginal, 
 			String pTituloOriginal, String pResumen, String pPopularidad,String pProductora, String productCompanies,
 			String productionCountries,
 			String pFechaEstreno, String pGanancia, String pTiempoReproduccion, 
@@ -142,7 +143,7 @@ public class Pelicula implements Comparable<Pelicula>
 		titulo = ptitulo;
 		
 		
-		
+		generos = pgeneros;
 		
 		
 		
@@ -179,6 +180,14 @@ public class Pelicula implements Comparable<Pelicula>
 	
 	public void cambiarPresupuesto(int nuevoPresupuesto){
 		presupuesto = nuevoPresupuesto;
+	}
+	
+	public String darGenero(){
+		return generos;
+	}
+	
+	public void cambiarGenero(String nuevo){
+		generos = nuevo;
 	}
 	
 	public String darImdbId(){

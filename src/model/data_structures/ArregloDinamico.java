@@ -49,54 +49,6 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
                tamanoAct++;
        }
 
-		public int darCapacidad() {
-			return tamanoMax;
-		}
-
-		public int darTamano() {
-			return tamanoAct;
-		}
-
-		public T darElemento(int i) {
-			// TODO implementar
-			if(i<0 || i>=tamanoAct){
-				return null;
-			}else{
-				return elementos[i];
-			}
-			
-		}
-
-		public T buscar(T dato) {
-			// TODO implementar
-			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
-			
-			boolean bandera = true;
-			for (int i = 0; i < elementos.length && bandera; i++) {
-					if(((Comparable<T>) elementos[i]).compareTo(dato)==0){
-						bandera = false;
-						return elementos[i];
-					}
-			}
-			return null;
-		}
-
-		public T eliminar(T dato) {
-			// TODO implementar
-			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
-			boolean bandera = true;
-			T respuesta = null;
-			for (int i = 0; i < elementos.length && bandera; i++) {
-					if(((Comparable<T>) elementos[i]).compareTo((T) dato)==0){
-						bandera = false;
-						respuesta = elementos[i];
-						elementos[i]=null;
-						tamanoAct--;
-
-					}
-			}
-			return respuesta;
-		}
 		
 		
 		//
@@ -250,6 +202,8 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 			}
 		}
 
+		
+		
 		@Override
 		public T PrimerElemento() {
 			
@@ -260,6 +214,8 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 				return elementos[0];
 			}
 		}
+		
+		
 
 		@Override
 		public T ultimoElemento() {
@@ -282,12 +238,15 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 				return elementos[pos-1];
 			}
 		}
+		
+		
 
 		@Override
 		public int tamanio() {
 			
 			return tamanoAct;
 		}
+		
 
 		@Override
 		public boolean esVacio() {
@@ -338,8 +297,11 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 			return tamanoAct;
 		}
 
+		
+		
 		@Override
 		public T obtenerElemento(T elem) {
+			
 			// TODO Auto-generated method stub
 			for (int i = 0; i < tamanoAct-1; i++) {
 				if(elementos[i]==elem){

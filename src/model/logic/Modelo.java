@@ -307,6 +307,41 @@ public class Modelo {
 			}
 	}
 	
+	
+	
+	public void moviesByGenre(String genre){
+		
+		ArregloDinamico<Pelicula> peliculasDelGenero = new ArregloDinamico(1);
+		
+		double voteAcum = 0;
+		
+		double promedio = 0;
+		
+		for (int i = 1; i <= peliculas.size(); i++) {
+		
+			Pelicula PeliculaB = peliculas.obtenerElemento(i);
+			if(PeliculaB.darGenero().equals(genre)){
+				peliculasDelGenero.agregarAlFinal(PeliculaB);
+				
+				voteAcum += PeliculaB.darCuentaVotos();
+			}
+			promedio = voteAcum / peliculasDelGenero.size();
+		}
+		
+		System.out.println("Total de películas del género: " + peliculasDelGenero.size());
+		System.out.println("El promedio de votos es: " + promedio);
+		
+		for (int i = 1; i <= peliculasDelGenero.size(); i++) {
+			Pelicula PeliculaB = peliculas.obtenerElemento(i);	
+			System.out.println(PeliculaB.darTituloOriginal());
+		}
+		
+	}
+	
+	
+	
+	
+	
 	public void leerPeliculasListaEncadenada() {
 		
 	try{
