@@ -283,12 +283,12 @@ public class Modelo {
 							,numeroCompaniaProductora, numeroCompaniaPaises,numeroIdiomasHablados);
 					
 			        peliculas.agregarAlFinal(Pelicula1);
-					System.out.println(peliculas.obtenerElemento(1).darId());
+					
 		    	 
 		    	 
 		     }
 		     
-		     
+		     System.out.println(peliculas.obtenerElemento(peliculas.obtenerElemento(18)).darTituloOriginal());
 		     
 		     
 		     
