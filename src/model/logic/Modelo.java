@@ -177,7 +177,7 @@ public class Modelo {
 		{
 			CSVParser parser = new CSVParserBuilder().withSeparator(';').build();
 			
-			FileReader filereader = new FileReader("./data/AllMoviesDetailsCleaned.csv");
+			FileReader filereader = new FileReader("./data/SmallMoviesDetailsCleaned.csv");
 		     
 			 CSVReader csvReader = ( new CSVReaderBuilder(filereader))
                      .withCSVParser(parser) 
@@ -283,7 +283,7 @@ public class Modelo {
 							,numeroCompaniaProductora, numeroCompaniaPaises,numeroIdiomasHablados);
 					
 			        peliculas.agregarAlFinal(Pelicula1);
-					System.out.println(peliculas.size());
+					System.out.println(peliculas.obtenerElemento(1).darId());
 		    	 
 		    	 
 		     }

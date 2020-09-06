@@ -81,11 +81,11 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 			return null;
 		}
 
-		public Object eliminar(Object dato) {
+		public T eliminar(T dato) {
 			// TODO implementar
 			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
 			boolean bandera = true;
-			Object respuesta = null;
+			T respuesta = null;
 			for (int i = 0; i < elementos.length && bandera; i++) {
 					if(((Comparable<T>) elementos[i]).compareTo((T) dato)==0){
 						bandera = false;

@@ -69,14 +69,14 @@ public class Pelicula implements Comparable<Pelicula>
 	
 	private Pelicula anterior;
 
-	
+	private String titulo;
 	
 	
 	public Pelicula (int pID, double pPresupuesto,String generos, String pImdb_Id, String pIdiomaOriginal, 
 			String pTituloOriginal, String pResumen, String pPopularidad,String pProductora, String productCompanies,
 			String productionCountries,
 			String pFechaEstreno, String pGanancia, String pTiempoReproduccion, 
-			String pIdiomasHablados, String pEstado,String pTagline, String titulo,
+			String pIdiomasHablados, String pEstado,String pTagline, String ptitulo,
 			String pPromedioVotos,int pCuentaVotos, int pNumeroCompaniaProductora, 
 			int pNumeroCompaniaPaises, int pNumeroIdiomasHablados)
 	{
@@ -139,7 +139,7 @@ public class Pelicula implements Comparable<Pelicula>
 		siguiente = null;
 	
 
-		
+		titulo = ptitulo;
 		
 		
 		
