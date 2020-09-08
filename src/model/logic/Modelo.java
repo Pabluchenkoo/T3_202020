@@ -14,6 +14,7 @@ import java.util.Date;
 import model.data_structures.ArregloDinamico;
 import model.data_structures.IArregloDinamico;
 import model.data_structures.ListaEncadenada;
+import model.data_structures.MergeSort;
 import model.data_structures.ShellSort;
 
 import com.opencsv.bean.CsvToBean;
@@ -288,7 +289,7 @@ public class Modelo {
 		    	 
 		     }
 		     
-		     System.out.println(peliculas.obtenerElemento(peliculas.obtenerElemento(18)).darTituloOriginal());
+		     sortMoviesByGenre("Comedy");
 		     
 		     
 		     
@@ -317,7 +318,7 @@ public class Modelo {
 		
 		double promedio = 0;
 		
-		for (int i = 1; i <= peliculas.size(); i++) {
+		for (int i = 0; i < peliculas.size(); i++) {
 		
 			Pelicula PeliculaB = peliculas.obtenerElemento(i);
 			if(PeliculaB.darGenero().equals(genre)){
@@ -330,7 +331,7 @@ public class Modelo {
 		
 		System.out.println("Total de películas del género: " + peliculasDelGenero.size());
 		System.out.println("El promedio de votos es: " + promedio);
-		
+		System.err.println("Titulos de las peliculas");
 		for (int i = 1; i <= peliculasDelGenero.size(); i++) {
 			Pelicula PeliculaB = peliculas.obtenerElemento(i);	
 			System.out.println(PeliculaB.darTituloOriginal());
@@ -338,6 +339,37 @@ public class Modelo {
 		
 	}
 	
+	
+	
+	
+	public void sortMoviesByGenre(String genre){
+		
+		ArregloDinamico<Pelicula> peliculasDelGenero = new ArregloDinamico(1);
+		//System.err.println("Lista en desorden");
+		for (int i = 1; i <= peliculas.size(); i++) {
+			
+			
+			
+			Pelicula PeliculaB = peliculas.obtenerElemento(i);
+			if(PeliculaB.darGenero().equals(genre)){
+				peliculasDelGenero.agregarAlFinal(PeliculaB);
+				//System.out.println(PeliculaB.darTituloOriginal());
+			}
+		}
+	
+		// ordernar peliculas del genero de manera ascendente y descendente usando merge Sort
+	
+		System.err.println(peliculasDelGenero.size()-1);
+		MergeSort merge = new MergeSort();
+		merge.MergeSortPart2(peliculasDelGenero, 0, peliculasDelGenero.size()-1);
+		
+		System.err.println("Lista en orden");
+		for (int i = 1; i <= peliculasDelGenero.size(); i++) {
+			Pelicula PeliculaB = peliculas.obtenerElemento(i);
+			System.out.println(PeliculaB.darTituloOriginal());
+		}
+	
+	}
 	
 	
 	
