@@ -113,6 +113,7 @@ public class Modelo {
 		}
 		return respuesta;
 	}
+	//requerimiento 3.2
 	public int numeroPeliculasDirigidas(String pDirector)
 	{
 		int respuesta = 0;
@@ -120,6 +121,22 @@ public class Modelo {
 		ArregloDinamico<Pelicula> peliculas = PeliculasDeDirector(pDirector);
 		respuesta = peliculas.darTamano();
 		
+		
+		return respuesta;
+	}
+	//requerimiento 3.3
+	public double promedioPeliculasDirigidas(String pDirector)
+	{
+		double respuesta = 0.0;
+		int cuenta=0;
+		ArregloDinamico<Pelicula> peliculas = PeliculasDeDirector(pDirector);
+		for (int i =0; i<peliculas.darTamano();i++)
+		{
+			
+			respuesta += peliculas.darElemento(i).darPromedioVotos() ;
+			cuenta+=1;
+		}
+		respuesta = respuesta /cuenta;
 		
 		return respuesta;
 	}

@@ -48,7 +48,7 @@ public class Pelicula implements Comparable<Pelicula>
 	private String tagline;
 	
 	
-	private String promedioVotos;
+	private Double promedioVotos;
 	
 	
 	private int cuentaVotos;
@@ -77,7 +77,7 @@ public class Pelicula implements Comparable<Pelicula>
 			String productionCountries,
 			String pFechaEstreno, int i, int j, 
 			String pIdiomasHablados, String pEstado,String pTagline, String ptitulo,
-			String pPromedioVotos,int pCuentaVotos, int pNumeroCompaniaProductora, 
+			Double pPromedioVotos,int pCuentaVotos, int pNumeroCompaniaProductora, 
 			int pNumeroCompaniaPaises, int pNumeroIdiomasHablados)
 	{
 	
@@ -271,11 +271,11 @@ public class Pelicula implements Comparable<Pelicula>
 		tagline = nuevoTagline;
 	}
 	
-	public String darPromedioVotos(){
+	public Double darPromedioVotos(){
 		return promedioVotos;
 	}
 	
-	public void cambiarPromedioVotos(String nuevoPromedio){
+	public void cambiarPromedioVotos(Double nuevoPromedio){
 		promedioVotos =  nuevoPromedio;
 	}
 	
