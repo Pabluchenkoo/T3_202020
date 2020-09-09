@@ -14,7 +14,9 @@ import java.util.Date;
 import model.data_structures.ArregloDinamico;
 import model.data_structures.IArregloDinamico;
 import model.data_structures.ListaEncadenada;
+import model.data_structures.QuickSort;
 import model.data_structures.ShellSort;
+import model.data_structures.ShellSortArregloDinamico;
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -49,40 +51,7 @@ public class Modelo {
 		peliculas = new ArregloDinamico<Pelicula>(329045);
 	}
 	
-	/**
-	 * Constructor del modelo del mundo con capacidad dada
-	 * @param tamano
-	 */
 	
-	
-	/**
-	 * Servicio de consulta de numero de elementos presentes en el modelo 
-	 * @return numero de elementos presentes en el modelo
-	 */
-
-
-	/**
-	 * @return capacidad actual del modelo
-	 */
-
-	/**
-	 * Requerimiento de agregar dato
-	 * @param dato
-	 */
-
-	
-	/**
-	 * Requerimiento buscar dato
-	 * @param dato Dato a buscar
-	 * @return dato encontrado
-	 */
-
-	
-	/**
-	 * Requerimiento eliminar dato
-	 * @param dato Dato a eliminar
-	 * @return dato eliminado
-	 */
 
 
 	public String PeliculasDeDirectores(String palabra)
@@ -288,17 +257,9 @@ public class Modelo {
 		    	 
 		     }
 		     
-		     System.out.println(peliculas.obtenerElemento(peliculas.obtenerElemento(18)).darTituloOriginal());
+		     sortMoviesByGenre("Comedy");
 		     
-		     
-		     
-		     
-		     
-//			 Reader reader = Files.newBufferedReader(Paths.get("./data/AllMoviesDetailsCleaned.csv"));
-//			 
-//			 CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).withSeparator(';').build();
-			
-			
+
 		
 		}     
 			catch(Exception e)
@@ -306,6 +267,80 @@ public class Modelo {
 				e.printStackTrace();
 			}
 	}
+	
+	
+	
+	public void moviesByGenre(String genre){
+		
+		ArregloDinamico<Pelicula> peliculasDelGenero = new ArregloDinamico(1);
+		
+		double voteAcum = 0;
+		
+		double promedio = 0;
+		
+		for (int i = 0; i < peliculas.size(); i++) {
+		
+			Pelicula PeliculaB = peliculas.obtenerElemento(i);
+			if(PeliculaB.darGenero().equals(genre)){
+				peliculasDelGenero.agregarAlFinal(PeliculaB);
+				
+				voteAcum += PeliculaB.darCuentaVotos();
+			}
+			promedio = voteAcum / peliculasDelGenero.size();
+		}
+		
+		System.out.println("Total de películas del género: " + peliculasDelGenero.size());
+		System.out.println("El promedio de votos es: " + promedio);
+		System.err.println("Titulos de las peliculas");
+		for (int i = 1; i <= peliculasDelGenero.size(); i++) {
+			Pelicula PeliculaB = peliculas.obtenerElemento(i);	
+			System.out.println(PeliculaB.darTituloOriginal());
+		}
+		
+	}
+	
+	
+	
+	
+	public void sortMoviesByGenre(String genre){
+		
+		ArregloDinamico<Pelicula> peliculasDelGenero = new ArregloDinamico(1);
+		//System.err.println("Lista en desorden");
+		for (int i = 1; i <= peliculas.size(); i++) {
+			
+			
+			
+			Pelicula PeliculaB = peliculas.obtenerElemento(i);
+			if(PeliculaB.darGenero().equals(genre)){
+				peliculasDelGenero.agregarAlFinal(PeliculaB);
+				//System.out.println(PeliculaB.darTituloOriginal());
+			}
+		}
+	
+		// ordernar peliculas del genero de manera ascendente y descendente usando merge Sort
+	
+		System.err.println("Lista Desordenada");
+		
+		for (int i = 1; i <= peliculasDelGenero.size(); i++) {
+			Pelicula PeliculaB = peliculas.obtenerElemento(i);
+			System.out.println(PeliculaB.darTituloOriginal());
+		}
+		
+		QuickSort s = new QuickSort();
+		s.quickSort(peliculasDelGenero,0,peliculasDelGenero.size());
+		
+		System.err.println("Lista Ordenada");
+		
+		for (int i = 1; i <= peliculasDelGenero.size(); i++) {
+			Pelicula PeliculaB = peliculas.obtenerElemento(i);
+			System.out.println(PeliculaB.darTituloOriginal());
+			System.err.println(PeliculaB.darPromedioVotos());
+		}
+	
+	}
+	
+	
+	
 	
 	public void leerPeliculasListaEncadenada() {
 		
