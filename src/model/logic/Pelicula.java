@@ -74,7 +74,7 @@ public class Pelicula implements Comparable<Pelicula>
 	
 	
 
-	public Pelicula (int pID, double pPresupuesto,String generos, String pImdb_Id, String pIdiomaOriginal, 
+	public Pelicula (int pID, double pPresupuesto,String pgeneros, String pImdb_Id, String pIdiomaOriginal, 
 
 			String pTituloOriginal, String pResumen, String pPopularidad,String pProductora, String productCompanies,
 			String productionCountries,
@@ -168,11 +168,11 @@ public class Pelicula implements Comparable<Pelicula>
 	
 	
 	
-	public String darId(){
+	public int darId(){
 		return iD;
 	}
 	
-	public void cambiarId(String nuevoId){
+	public void cambiarId(int nuevoId){
 		iD = nuevoId;
 	}
 	
@@ -286,7 +286,7 @@ public class Pelicula implements Comparable<Pelicula>
 		return promedioVotos;
 	}
 	
-	public void cambiarPromedioVotos(Double nuevoPromedio){
+	public void cambiarPromedioVotos(String nuevoPromedio){
 		promedioVotos =  nuevoPromedio;
 	}
 	
