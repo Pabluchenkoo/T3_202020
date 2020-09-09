@@ -29,7 +29,7 @@ import com.opencsv.CSVReaderBuilder;
  * Definicion del modelo del mundo
  *
  */
-public class Modelo {
+public class Modelo implements MoviesCatalog{
 	/**
 	 * Atributos del modelo del mundo
 	 */
