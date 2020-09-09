@@ -54,6 +54,9 @@ public class Controller {
 					break;
 					
 				case 5:
+					Scanner lector1 =  new Scanner(System.in); 
+					String genre = lector1.next();
+					modelo.moviesByGenre(genre);
 					break;
 					
 				case 6:
