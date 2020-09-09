@@ -53,6 +53,12 @@ public class Controller {
 					modelo.peliculasConPeorPromedio();
 					break;
 					
+				case 5:
+					break;
+					
+				case 6:
+					break;
+					
 				default: 
 					view.printMessage("--------- \n Opcion Invalida !! \n---------");
 					break;

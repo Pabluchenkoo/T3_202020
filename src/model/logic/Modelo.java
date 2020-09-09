@@ -71,7 +71,7 @@ public class Modelo {
 				String [] palabras = cadena.split(";");
 				if (palabras[1].equals(pDirector)) 
 				{
-					Pelicula nueva = new Pelicula(palabras[0], 0.0, palabras[4], "", "", palabras[2], "", "", "", "", "", "", 0, 0, "", "", "", "", palabras[3], 0, 0, 0, 0);
+					Pelicula nueva = new Pelicula(Integer.parseInt(palabras[0]), 0.0, palabras[4], "", "", palabras[2], "", "", "", "", "", "", 0, 0, "", "", "", "", palabras[3], 0, 0, 0, 0);
 					respuesta.agregar(nueva);
 				}
 			}
@@ -232,11 +232,11 @@ public class Modelo {
 				
 					k++;
 					
-					String ganancia = (data[k]);
+					int ganancia = Integer.parseInt(data[k]);
 					
 					k++;
 				
-					String tiempoReproduccion =(data[k]);
+					int  tiempoReproduccion =Integer.parseInt(data[k]);
 					
 					k++;
 				
@@ -273,8 +273,10 @@ public class Modelo {
 					
 					int numeroIdiomasHablados = Integer.parseInt(data[k]);
 					
-					Pelicula Pelicula1 = new Pelicula(iD,presupuesto,generos,imdb_Id,idiomaOriginal,tituloOriginal, resumen, popularidad, productora,productCompanies,productCompanies, fechaEstreno
-							,ganancia, tiempoReproduccion, idiomasHablados, Estado, tagline,titulo,promedioVotos,cuentaVotos
+					Pelicula Pelicula1 = new Pelicula(iD,presupuesto,generos,imdb_Id,idiomaOriginal,tituloOriginal,
+							resumen, popularidad, productora,productCompanies,productCompanies, fechaEstreno
+							,ganancia, tiempoReproduccion, idiomasHablados, Estado, tagline,titulo,
+							promedioVotos,cuentaVotos
 							,numeroCompaniaProductora, numeroCompaniaPaises,numeroIdiomasHablados);
 					
 			        peliculas.agregarAlFinal(Pelicula1);
@@ -433,11 +435,11 @@ public class Modelo {
 			
 				k++;
 				
-				String ganancia = (data[k]);
+				int ganancia = Integer.parseInt(data[k]);
 				
 				k++;
 			
-				String tiempoReproduccion =(data[k]);
+				int tiempoReproduccion =Integer.parseInt(data[k]);
 				
 				k++;
 			
