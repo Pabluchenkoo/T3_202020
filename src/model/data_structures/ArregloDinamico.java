@@ -147,9 +147,9 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 			
 			copia =(T []) new  Comparable [tamanoAct];
 			
-			copia[pos] = element;
+			copia[pos-1] = element;
 			
-			for(int i=0; i<pos;i++){
+			for(int i=0; i<pos-1;i++){
 				copia[i]=elementos[i];
 			}
 			

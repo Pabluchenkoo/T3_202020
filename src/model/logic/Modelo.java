@@ -14,8 +14,9 @@ import java.util.Date;
 import model.data_structures.ArregloDinamico;
 import model.data_structures.IArregloDinamico;
 import model.data_structures.ListaEncadenada;
-import model.data_structures.MergeSort;
+import model.data_structures.QuickSort;
 import model.data_structures.ShellSort;
+import model.data_structures.ShellSortArregloDinamico;
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -50,40 +51,7 @@ public class Modelo {
 		peliculas = new ArregloDinamico<Pelicula>(329045);
 	}
 	
-	/**
-	 * Constructor del modelo del mundo con capacidad dada
-	 * @param tamano
-	 */
 	
-	
-	/**
-	 * Servicio de consulta de numero de elementos presentes en el modelo 
-	 * @return numero de elementos presentes en el modelo
-	 */
-
-
-	/**
-	 * @return capacidad actual del modelo
-	 */
-
-	/**
-	 * Requerimiento de agregar dato
-	 * @param dato
-	 */
-
-	
-	/**
-	 * Requerimiento buscar dato
-	 * @param dato Dato a buscar
-	 * @return dato encontrado
-	 */
-
-	
-	/**
-	 * Requerimiento eliminar dato
-	 * @param dato Dato a eliminar
-	 * @return dato eliminado
-	 */
 
 
 	public String PeliculasDeDirectores(String palabra)
@@ -291,15 +259,7 @@ public class Modelo {
 		     
 		     sortMoviesByGenre("Comedy");
 		     
-		     
-		     
-		     
-		     
-//			 Reader reader = Files.newBufferedReader(Paths.get("./data/AllMoviesDetailsCleaned.csv"));
-//			 
-//			 CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).withSeparator(';').build();
-			
-			
+
 		
 		}     
 			catch(Exception e)
@@ -359,14 +319,22 @@ public class Modelo {
 	
 		// ordernar peliculas del genero de manera ascendente y descendente usando merge Sort
 	
-		System.err.println(peliculasDelGenero.size()-1);
-		MergeSort merge = new MergeSort();
-		merge.MergeSortPart2(peliculasDelGenero, 0, peliculasDelGenero.size()-1);
+		System.err.println("Lista Desordenada");
 		
-		System.err.println("Lista en orden");
 		for (int i = 1; i <= peliculasDelGenero.size(); i++) {
 			Pelicula PeliculaB = peliculas.obtenerElemento(i);
 			System.out.println(PeliculaB.darTituloOriginal());
+		}
+		
+		QuickSort s = new QuickSort();
+		s.quickSort(peliculasDelGenero,0,peliculasDelGenero.size());
+		
+		System.err.println("Lista Ordenada");
+		
+		for (int i = 1; i <= peliculasDelGenero.size(); i++) {
+			Pelicula PeliculaB = peliculas.obtenerElemento(i);
+			System.out.println(PeliculaB.darTituloOriginal());
+			System.err.println(PeliculaB.darPromedioVotos());
 		}
 	
 	}
