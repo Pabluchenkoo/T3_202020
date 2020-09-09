@@ -87,7 +87,7 @@ public class Modelo {
 	{
 		int respuesta = 0;
 		
-		ArregloDinamico<Pelicula> peliculas = PeliculasDeDirector(pDirector);
+		ArregloDinamico<Pelicula> peliculas = moviesByDirector(pDirector);
 		respuesta = peliculas.darTamano();
 		
 		
@@ -98,7 +98,7 @@ public class Modelo {
 	{
 		double respuesta = 0.0;
 		int cuenta=0;
-		ArregloDinamico<Pelicula> peliculas = PeliculasDeDirector(pDirector);
+		ArregloDinamico<Pelicula> peliculas = MoviesByDirector(pDirector);
 		for (int i =0; i<peliculas.darTamano();i++)
 		{
 			
@@ -317,7 +317,7 @@ public class Modelo {
 			promedio = voteAcum / peliculasDelGenero.size();
 		}
 		
-		System.out.println("Total de películas del género: " + peliculasDelGenero.size());
+		System.out.println("Total de pelï¿½culas del gï¿½nero: " + peliculasDelGenero.size());
 		System.out.println("El promedio de votos es: " + promedio);
 		System.err.println("Titulos de las peliculas");
 		for (int i = 1; i <= peliculasDelGenero.size(); i++) {
