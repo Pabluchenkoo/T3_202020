@@ -98,7 +98,8 @@ public class Modelo {
 	{
 		double respuesta = 0.0;
 		int cuenta=0;
-		ArregloDinamico<Pelicula> peliculas = MoviesByDirector(pDirector);
+		
+		ArregloDinamico<Pelicula> peliculas = moviesByDirector(pDirector);
 		for (int i =0; i<peliculas.darTamano();i++)
 		{
 			
