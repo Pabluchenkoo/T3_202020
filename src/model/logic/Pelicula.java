@@ -6,7 +6,7 @@ import model.data_structures.IArregloDinamico;
 
 public class Pelicula implements Comparable<Pelicula> 
 {
-	private String iD;
+	private int iD;
 	
 	
 	private double presupuesto;
@@ -74,7 +74,7 @@ public class Pelicula implements Comparable<Pelicula>
 	
 	
 
-	public Pelicula (String pID, double pPresupuesto,String generos, String pImdb_Id, String pIdiomaOriginal, 
+	public Pelicula (int pID, double pPresupuesto,String generos, String pImdb_Id, String pIdiomaOriginal, 
 
 			String pTituloOriginal, String pResumen, String pPopularidad,String pProductora, String productCompanies,
 			String productionCountries,
