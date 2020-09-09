@@ -318,7 +318,7 @@ public class Modelo {
 			promedio = voteAcum / peliculasDelGenero.size();
 		}
 		
-		System.out.println("Total de pel�culas del g�nero: " + peliculasDelGenero.size());
+		System.out.println("Total de peliculas del genero: " + peliculasDelGenero.size());
 		System.out.println("El promedio de votos es: " + promedio);
 		System.err.println("Titulos de las peliculas");
 		for (int i = 1; i <= peliculasDelGenero.size(); i++) {
