@@ -45,32 +45,34 @@ public class Controller {
 			int option = lector.nextInt();
 			switch(option){
 				case 1:
-					modelo.PeliculasBuenasDeDirector(pDirector);
-					
+					System.out.println("Ingrese el director");
+					Scanner lector3 = new Scanner(System.in);
+					String director = lector3.next();
+					modelo.PeliculasBuenasDeDirector(director);
+					break;
 				case 2:
 					modelo.peliculasConPeorPromedio();
 					break;
 				case 3:
-					modelo.moviesByDirector(null);
-					modelo.numeroPeliculasDirigidas(null);
-					modelo.promedioPeliculasDirigidas(null);
-					
+					System.out.println("Ingrese el director");
+					Scanner lector4 = new Scanner(System.in);
+					String director1 = lector4.next();
+					modelo.moviesByDirector(director1);
 					break;
 				case 4:
 					modelo.moviesByActor(null);
-					modelo.numeroPeliculasActuadas(null);
-					modelo.promedioPeliculasActor(null);
+					
 					break;
 					
 				case 5:
-					System.out.println("Ingrese el género seleccionado");
+					System.out.println("Ingrese el gï¿½nero seleccionado");
 					Scanner lector1 =  new Scanner(System.in); 
 					String genre = lector1.next();
 					modelo.moviesByGenre(genre);
 					break;
 					
 				case 6:
-					System.out.println("Ingrese el género seleccionado");
+					System.out.println("Ingrese el gï¿½nero seleccionado");
 					Scanner lector2 =  new Scanner(System.in); 
 					String genre2 = lector2.next();
 					modelo.sortMoviesByGenre(genre2);

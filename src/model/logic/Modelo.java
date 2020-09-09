@@ -76,11 +76,11 @@ public class Modelo {
 				String [] palabras = cadena.split(";");
 				if (palabras[1].equals(pDirector)) 
 				{
-<<<<<<< HEAD
+
 					Pelicula nueva = new Pelicula(Integer.parseInt(palabras[0]), 0.0, palabras[4], "", "", palabras[2], "", "", "", "", "", "", "", "", "", "", "", "", palabras[3], 0, 0, 0, 0);
-=======
-					Pelicula nueva = new Pelicula(Integer.parseInt(palabras[0]), 0.0, palabras[4], "", "", palabras[2], "", "", "", "", "", "", 0, 0, "", "", "", "", palabras[3], 0, 0, 0, 0);
->>>>>>> 152511b55264669d85775b1b4f5c3d1aa82ba447
+
+					
+
 					respuesta.agregar(nueva);
 				}
 			}
