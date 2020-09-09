@@ -1,8 +1,8 @@
 package model.logic;
 
-public class Casting {
+public class Casting implements Comparable<Casting>  {
 	
-	private Pelicula iD;
+	private int iD;
 	
 	
 	private String nombreActor1;
@@ -56,17 +56,57 @@ public class Casting {
 	private String nombreEditor;
 	
 	
+	public Casting (int id, String pnombreActor1, String pgeneroActor1 , String pnombreActor2, String pgeneroActor2 , 
+			String pnombreActor3, String pgeneroActor3 , String pnombreActor4, String pgeneroActor4 , String pnombreActor5, 
+			String pgeneroActor5 , int pnumeroActor, String pnombreDirector, int pgeneroDirector, int pnumeroDirector,
+			String pnombreProductor, int pnumeroProductor, String pnombreEditor){
+		
+		iD=id;
+		
+		nombreActor1 = pnombreActor1;
+		
+		generoActor1 = pgeneroActor1;
+ 		
+		nombreActor2 = pnombreActor2;
+		
+		generoActor2 = pgeneroActor2;
+		
+		nombreActor3 = pnombreActor3;
+		
+		generoActor3 = pgeneroActor3;
+		
+		nombreActor4 = pnombreActor4;
+		
+		generoActor4 = pgeneroActor4;
+		
+		nombreActor5 = pnombreActor5;
+		
+		generoActor5 = pgeneroActor5;
+		
+		numeroActor = pnumeroActor;
+		
+		nombreDirector = pnombreDirector;
+		
+		generoDirector = pgeneroDirector;
+		
+		numeroDirector = pnumeroDirector;
+		
+		nombreProductor = pnombreProductor;
+		
+		numeroProductor = pnumeroProductor;
+		
+		nombreEditor = pnombreEditor;
+	}
 	
 	
 	
 	
 	
 	
-	
-	public Pelicula dariD() {
+	public int dariD() {
 		return iD;
 	}
-	public void cambiariD(Pelicula iD) {
+	public void cambiariD(int iD) {
 		this.iD = iD;
 	}
 	public String darNombreActor1() {
@@ -170,6 +210,17 @@ public class Casting {
 	}
 	public void cambiarNombreEditor(String nombreEditor) {
 		this.nombreEditor = nombreEditor;
+	}
+
+
+
+
+
+
+	@Override
+	public int compareTo(Casting arg0) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 

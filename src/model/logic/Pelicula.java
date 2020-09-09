@@ -34,10 +34,10 @@ public class Pelicula implements Comparable<Pelicula>
 	private String fechaEstreno;
 	
 	
-	private int ganancia;
+	private String ganancia;
 	
 	
-	private int tiempoReproduccion;
+	private String tiempoReproduccion;
 	
 	
 	private String idiomasHablados;
@@ -82,7 +82,7 @@ public class Pelicula implements Comparable<Pelicula>
 
 			String pTituloOriginal, String pResumen, String pPopularidad,String pProductora, String productCompanies,
 			String productionCountries,
-			String pFechaEstreno, int pGanancia, int pReproduccion, 
+			String pFechaEstreno, String ganancia2, String tiempoReproduccion2, 
 			String pIdiomasHablados, String pEstado,String pTagline, String ptitulo,
 			String pPromedioVotos,int pCuentaVotos, int pNumeroCompaniaProductora, 
 			int pNumeroCompaniaPaises, int pNumeroIdiomasHablados)
@@ -113,10 +113,10 @@ public class Pelicula implements Comparable<Pelicula>
 		fechaEstreno = pFechaEstreno;
 	
 	
-		ganancia = pGanancia;
+		ganancia = ganancia2;
 		
 		
-		tiempoReproduccion = pReproduccion;
+		tiempoReproduccion = tiempoReproduccion2;
 		
 		
 		idiomasHablados = pIdiomasHablados;
@@ -172,6 +172,19 @@ public class Pelicula implements Comparable<Pelicula>
 	
 	
 	
+	
+
+
+
+
+
+
+
+
+
+
+
+
 	public int darId(){
 		return iD;
 	}
@@ -245,19 +258,19 @@ public class Pelicula implements Comparable<Pelicula>
 		fechaEstreno = nuevaFecha;
 	}
 	
-	public int darGanancia(){
+	public String darGanancia(){
 		return ganancia;
 	}
 	
-	public void cambiarGanancia(int nuevaGanancia){
+	public void cambiarGanancia(String nuevaGanancia){
 		ganancia = nuevaGanancia;
 	}
 	
-	public int darTiempoReproduccion(){
+	public String darTiempoReproduccion(){
 		return tiempoReproduccion;
 	}
 	
-	public void cambiarTiempoReproduccion(int nuevoTiempo){
+	public void cambiarTiempoReproduccion(String nuevoTiempo){
 		tiempoReproduccion = nuevoTiempo;
 	}
 	

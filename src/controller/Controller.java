@@ -45,12 +45,21 @@ public class Controller {
 			int option = lector.nextInt();
 			switch(option){
 				case 1:
+					modelo.PeliculasBuenasDeDirector(pDirector);
 					
 				case 2:
-					modelo.leerPeliculasArregloDinamico();
+					modelo.peliculasConPeorPromedio();
 					break;
 				case 3:
-					modelo.peliculasConPeorPromedio();
+					modelo.moviesByDirector(null);
+					modelo.numeroPeliculasDirigidas(null);
+					modelo.promedioPeliculasDirigidas(null);
+					
+					break;
+				case 4:
+					modelo.moviesByActor(null);
+					modelo.numeroPeliculasActuadas(null);
+					modelo.promedioPeliculasActor(null);
 					break;
 					
 				default: 

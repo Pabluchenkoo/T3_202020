@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
@@ -20,6 +21,7 @@ import model.data_structures.ShellSortArregloDinamico;
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
+import com.sun.tools.javac.util.List;
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
@@ -40,6 +42,7 @@ public class Modelo {
 	 */
 	private ArregloDinamico<Pelicula> peliculas;
 	
+	private ArregloDinamico<Casting> casting;
 	private ListaEncadenada peliculasLE;
 	
 	/**
@@ -49,6 +52,8 @@ public class Modelo {
 	{
 		
 		peliculas = new ArregloDinamico<Pelicula>(329045);
+		casting = new ArregloDinamico<Casting>(329045);
+		
 	}
 	
 	
@@ -71,7 +76,7 @@ public class Modelo {
 				String [] palabras = cadena.split(";");
 				if (palabras[1].equals(pDirector)) 
 				{
-					Pelicula nueva = new Pelicula(palabras[0], 0.0, palabras[4], "", "", palabras[2], "", "", "", "", "", "", 0, 0, "", "", "", "", palabras[3], 0, 0, 0, 0);
+					Pelicula nueva = new Pelicula(Integer.parseInt(palabras[0]), 0.0, palabras[4], "", "", palabras[2], "", "", "", "", "", "", "", "", "", "", "", "", palabras[3], 0, 0, 0, 0);
 					respuesta.agregar(nueva);
 				}
 			}
@@ -103,14 +108,72 @@ public class Modelo {
 		for (int i =0; i<peliculas.darTamano();i++)
 		{
 			
-			respuesta += (Double)peliculas.darElemento(i).darPromedioVotos() ;
+			respuesta += Double.parseDouble(peliculas.darElemento(i).darPromedioVotos());
 			cuenta+=1;
 		}
 		respuesta = respuesta /cuenta;
 		
 		return respuesta;
 	}
+	//requerimiento 4.1
+	public ArregloDinamico<Pelicula> moviesByActor(String pActor)
+	{
+		ArregloDinamico<Pelicula> respuesta = null;
+			
+		try
+		{
+			
+				
+			FileReader archivo1 = new FileReader("./Autores1.csv");
+			BufferedReader leer = new BufferedReader( archivo1 );
+			String cadena = null;
+				
+			while((cadena=leer.readLine()) != null)
+			{
+				String [] palabras = cadena.split(";");
+				if (palabras[8].equals(pActor)) 
+				{
+					Pelicula nueva = new Pelicula(Integer.parseInt(palabras[0]), 0.0, palabras[4], "", "", palabras[2], "", "", "", "", "", "", "", "", "", "", "", "", palabras[3], 0, 0, 0, 0);
+					respuesta.agregar(nueva);
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println("Archivo no encontrado");
+		}
+		return respuesta;
+	}
+	//requerimiento 4.2
+	public int numeroPeliculasActuadas(String pActor)
+	{
+		int respuesta = 0;
+		
+		ArregloDinamico<Pelicula> peliculas = moviesByDirector(pActor);
+		respuesta = peliculas.darTamano();
+		
+		
+		return respuesta;
+	}
+	// requerimiento 4.3
+	public double promedioPeliculasActor(String pActor)
+	{
+		double respuesta = 0.0;
+		int cuenta=0;
+		
+		ArregloDinamico<Pelicula> peliculas = moviesByDirector(pActor);
+		for (int i = 0 ; i < peliculas.darTamano() ; i++ )
+		{
+			
+			respuesta += Double.parseDouble(peliculas.darElemento(i).darPromedioVotos());
+			cuenta += 1 ;
+		}
+		respuesta = respuesta /cuenta ;
+		
+		return respuesta ;
+	}
 	
+
 	
 	public void leerArchivo (){
 		try
@@ -130,43 +193,162 @@ public class Modelo {
 				System.out.println("Archivo no encontrado");
 			}
 	}
-	
-	public void peliculasConPeorPromedio (  )
-	{ 
+public void leerCastingArregloDinamico() {
 		
 		try
 		{
-			FileReader archivo = new FileReader("./Autores1.csv");
-			BufferedReader leer = new BufferedReader( archivo );
-			String cadena = null;
+			CSVParser parser = new CSVParserBuilder().withSeparator(';').build();
 			
-			ArrayList datos = new ArrayList();
-			
-			while((cadena=leer.readLine()) != null)
+			FileReader filereader = new FileReader("./data/SmallMoviesDetailsCleaned.csv");
+		     
+			 CSVReader csvReader = ( new CSVReaderBuilder(filereader))
+                     .withCSVParser(parser) 
+                     .build();
+			 
+			 csvReader.readNext();         
+			 String [] data;
+		     while ((data = csvReader.readNext()) != null) {
+		       
+					
+					int k = 0; 
+					
+					int iD= Integer.parseInt(data[k]);
+					k++;
+					
+					String nombreActor1 = data[k];
+					k++;
+					
+					String generoActor1 = data[k];
+					k++;
+					
+					String nombreActor2 = data[k];
+					k++;
+					
+					String generoActor2 = data[k];
+					k++;
+					
+					String nombreActor3 = data[k];
+					k++;
+					
+					String generoActor3 = data[k];
+					k++;
+					
+					String nombreActor4 = data[k];
+					k++;
+					
+					String generoActor4 = data[k];
+					k++;
+					
+					String nombreActor5 = data[k];
+					k++;
+					
+					String generoActor5 = data[k];
+					k++;
+					
+					int numeroActor = Integer.parseInt(data[k]);
+					k++;
+					
+					String NombreDirector =data[k];
+					k++;
+					
+					int generoDirector = Integer.parseInt(data[k]);
+					k++;
+					
+					int numeroDirector = Integer.parseInt(data[k]);
+					k++;
+					
+					String NombreProductor =data[k];
+					k++;
+					
+					int numeroProductor = Integer.parseInt(data[k]);
+					k++;
+					
+					String NombreEditor =data[k];
+					k++;
+					
+					
+					Casting Casting1 = new Casting(iD, nombreActor1, generoActor1, nombreActor2, generoActor2, 
+							nombreActor3, generoActor3, nombreActor4, generoActor4, nombreActor5, generoActor5,
+							numeroActor, NombreDirector, generoDirector, numeroDirector, NombreProductor, numeroProductor,
+							NombreEditor);
+					
+			        
+					casting.agregarAlFinal( Casting1 );
+		    	 
+		    	 
+		     }
+		     
+		
+		}     
+			catch(Exception e)
 			{
+				e.printStackTrace();
+			}
+	}
+
+
+
+
+
+	@SuppressWarnings("null")
+	public void PeliculasBuenasDeDirector ( String nombreDirector )
+	{
+		@SuppressWarnings("unchecked")
+		ArregloDinamico<Pelicula> peliculasBuenasDelDirector = new ArregloDinamico<Pelicula>(peliculas.size());
+		
+		Casting director = null;
+		
+		for ( int i = 0 ; i < peliculas.size() ; i++ )
+		{
+			Pelicula Pelicula = peliculas.obtenerElemento( i );
+			
+			if(director.darNombreDirector().equals( nombreDirector ))
+			{
+				double promedio = Double.parseDouble(Pelicula.darPromedioVotos());
 				
-			String [] Palabras = cadena.split(";");
-			
-			int calificacion = Integer.parseInt( Palabras[3] );
-			
-			if (calificacion < 4)
+				if ( promedio >= 7 )
 				{
-				datos.add(Palabras[3]);
-						
-				datos.sort( (Comparator) datos);
-	
-				System.out.println( " " + Palabras[0] + " \n " + Palabras[3] + " \n " + Palabras[2] + " \n " + Palabras[4] + " \n " + Palabras[5] + " \n " + Palabras[6] + " \n " + Palabras[7] + " \n " + Palabras[8] + " \n " + Palabras[9] );
+					peliculasBuenasDelDirector.agregar( Pelicula );
 				}
 			}
 		}
-		catch(Exception e)
+		
+		for (int i = 1; i <= peliculasBuenasDelDirector.size(); i++) 
 		{
-			System.out.println(" No se puede reportar una respuesta al requerimiento... ");
+			Pelicula PeliculaB = peliculas.obtenerElemento(i);	
+			System.out.println(PeliculaB.darTituloOriginal());
 		}
 		
 	}
-	
-	
+	public void peliculasConPeorPromedio () 
+	{ 
+		ArregloDinamico<Pelicula> peliculasConPeorPromedio = new ArregloDinamico<Pelicula>(20);
+		
+		for ( int i = 0 ; i < peliculas.size(); i++ )
+		{
+			Pelicula Pelicula = peliculas.obtenerElemento( i );
+			
+			for ( int j = i ; j <peliculas.size() ; j++ )	
+			{
+				Pelicula Pelicula2 = peliculas.obtenerElemento( j );
+				if ( Pelicula.darCuentaVotos() > Pelicula2.darCuentaVotos() )
+				{
+					peliculasConPeorPromedio.agregar( Pelicula );
+				}
+			}	
+		}
+		
+		Collections.reverse((List<?>) peliculasConPeorPromedio);
+		
+		for (int i = 1; i <= peliculasConPeorPromedio.size(); i++) 
+		{
+			Pelicula PeliculaB = peliculas.darElemento(i);	
+			System.out.println(PeliculaB.darTituloOriginal());
+		}
+		
+	}
+
+
 	public void leerPeliculasArregloDinamico() {
 		
 		try
@@ -299,7 +481,7 @@ public class Modelo {
 	
 	public void moviesByGenre(String genre){
 		
-		ArregloDinamico<Pelicula> peliculasDelGenero = new ArregloDinamico(1);
+		ArregloDinamico<Pelicula> peliculasDelGenero = new ArregloDinamico<Pelicula>(1);
 		
 		double voteAcum = 0;
 		
@@ -331,7 +513,7 @@ public class Modelo {
 	
 	public void sortMoviesByGenre(String genre){
 		
-		ArregloDinamico<Pelicula> peliculasDelGenero = new ArregloDinamico(1);
+		ArregloDinamico<Pelicula> peliculasDelGenero = new ArregloDinamico<Pelicula>(1);
 		//System.err.println("Lista en desorden");
 		for (int i = 1; i <= peliculas.size(); i++) {
 			
