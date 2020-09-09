@@ -85,7 +85,7 @@ public class Modelo {
 	 */
 
 	//Requerimiento 3.1
-	public ArregloDinamico<Pelicula> PeliculasDeDirector(String pDirector)
+	public ArregloDinamico<Pelicula> moviesByDirector(String pDirector)
 	{
 		ArregloDinamico<Pelicula> respuesta = null;
 		
@@ -133,7 +133,7 @@ public class Modelo {
 		for (int i =0; i<peliculas.darTamano();i++)
 		{
 			
-			respuesta += peliculas.darElemento(i).darPromedioVotos() ;
+			respuesta += (Double)peliculas.darElemento(i).darPromedioVotos() ;
 			cuenta+=1;
 		}
 		respuesta = respuesta /cuenta;
