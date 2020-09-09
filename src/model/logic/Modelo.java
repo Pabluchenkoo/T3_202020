@@ -53,9 +53,11 @@ public class Modelo {
 	
 	
 
-
-	public String PeliculasDeDirectores(String palabra)
+	//Requerimiento 3.1
+	public ArregloDinamico<Pelicula> moviesByDirector(String pDirector)
 	{
+		ArregloDinamico<Pelicula> respuesta = null;
+		
 		try
 		{
 		
@@ -66,15 +68,11 @@ public class Modelo {
 			
 			while((cadena=leer.readLine()) != null)
 			{
-				String [] Palabras = cadena.split(";");
-				if (Palabras[1].equals(palabra))
+				String [] palabras = cadena.split(";");
+				if (palabras[1].equals(pDirector)) 
 				{
-					int calificacion = Integer.parseInt( Palabras[3] );
-					
-					if(calificacion>=7)
-					{
-					System.out.println( " " + Palabras[0] + " \n " + Palabras[2] + " \n " + Palabras[4] + " \n " + Palabras[5] + " \n " + Palabras[6] + " \n " + Palabras[7] + " \n " + Palabras[8] + " \n " + Palabras[9] );
-					}
+					Pelicula nueva = new Pelicula(palabras[0], 0.0, palabras[4], "", "", palabras[2], "", "", "", "", "", "", 0, 0, "", "", "", "", palabras[3], 0, 0, 0, 0);
+					respuesta.agregar(nueva);
 				}
 			}
 		}
@@ -82,8 +80,36 @@ public class Modelo {
 		{
 			System.out.println("Archivo no encontrado");
 		}
-		return "";
+		return respuesta;
 	}
+	//requerimiento 3.2
+	public int numeroPeliculasDirigidas(String pDirector)
+	{
+		int respuesta = 0;
+		
+		ArregloDinamico<Pelicula> peliculas = PeliculasDeDirector(pDirector);
+		respuesta = peliculas.darTamano();
+		
+		
+		return respuesta;
+	}
+	//requerimiento 3.3
+	public double promedioPeliculasDirigidas(String pDirector)
+	{
+		double respuesta = 0.0;
+		int cuenta=0;
+		ArregloDinamico<Pelicula> peliculas = PeliculasDeDirector(pDirector);
+		for (int i =0; i<peliculas.darTamano();i++)
+		{
+			
+			respuesta += (Double)peliculas.darElemento(i).darPromedioVotos() ;
+			cuenta+=1;
+		}
+		respuesta = respuesta /cuenta;
+		
+		return respuesta;
+	}
+	
 	
 	public void leerArchivo (){
 		try
@@ -469,6 +495,8 @@ public class Modelo {
 	
 }
 	
+	
+
 	
 	
 }

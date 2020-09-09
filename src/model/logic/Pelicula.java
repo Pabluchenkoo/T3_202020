@@ -6,7 +6,7 @@ import model.data_structures.IArregloDinamico;
 
 public class Pelicula implements Comparable<Pelicula> 
 {
-	private int iD;
+	private String iD;
 	
 	
 	private double presupuesto;
@@ -34,10 +34,10 @@ public class Pelicula implements Comparable<Pelicula>
 	private String fechaEstreno;
 	
 	
-	private String ganancia;
+	private int ganancia;
 	
 	
-	private String tiempoReproduccion;
+	private int tiempoReproduccion;
 	
 	
 	private String idiomasHablados;
@@ -73,10 +73,12 @@ public class Pelicula implements Comparable<Pelicula>
 	private String titulo;
 	
 	
-	public Pelicula (int pID, double pPresupuesto,String pgeneros, String pImdb_Id, String pIdiomaOriginal, 
+
+	public Pelicula (String pID, double pPresupuesto,String generos, String pImdb_Id, String pIdiomaOriginal, 
+
 			String pTituloOriginal, String pResumen, String pPopularidad,String pProductora, String productCompanies,
 			String productionCountries,
-			String pFechaEstreno, String pGanancia, String pTiempoReproduccion, 
+			String pFechaEstreno, int i, int j, 
 			String pIdiomasHablados, String pEstado,String pTagline, String ptitulo,
 			String pPromedioVotos,int pCuentaVotos, int pNumeroCompaniaProductora, 
 			int pNumeroCompaniaPaises, int pNumeroIdiomasHablados)
@@ -107,10 +109,10 @@ public class Pelicula implements Comparable<Pelicula>
 		fechaEstreno = pFechaEstreno;
 	
 	
-		ganancia = pGanancia;
+		ganancia = i;
 		
 		
-		tiempoReproduccion = pTiempoReproduccion;
+		tiempoReproduccion = j;
 		
 		
 		idiomasHablados = pIdiomasHablados;
@@ -166,11 +168,11 @@ public class Pelicula implements Comparable<Pelicula>
 	
 	
 	
-	public int darId(){
+	public String darId(){
 		return iD;
 	}
 	
-	public void cambiarId(int nuevoId){
+	public void cambiarId(String nuevoId){
 		iD = nuevoId;
 	}
 	
@@ -239,19 +241,19 @@ public class Pelicula implements Comparable<Pelicula>
 		fechaEstreno = nuevaFecha;
 	}
 	
-	public String darGanancia(){
+	public int darGanancia(){
 		return ganancia;
 	}
 	
-	public void cambiarGanancia(String nuevaGanancia){
+	public void cambiarGanancia(int nuevaGanancia){
 		ganancia = nuevaGanancia;
 	}
 	
-	public String darTiempoReproduccion(){
+	public int darTiempoReproduccion(){
 		return tiempoReproduccion;
 	}
 	
-	public void cambiarTiempoReproduccion(String nuevoTiempo){
+	public void cambiarTiempoReproduccion(int nuevoTiempo){
 		tiempoReproduccion = nuevoTiempo;
 	}
 	
@@ -284,7 +286,7 @@ public class Pelicula implements Comparable<Pelicula>
 		return promedioVotos;
 	}
 	
-	public void cambiarPromedioVotos(String nuevoPromedio){
+	public void cambiarPromedioVotos(Double nuevoPromedio){
 		promedioVotos =  nuevoPromedio;
 	}
 	
