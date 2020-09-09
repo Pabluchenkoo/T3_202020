@@ -62,6 +62,20 @@ public class Controller {
 					modelo.promedioPeliculasActor(null);
 					break;
 					
+				case 5:
+					System.out.println("Ingrese el género seleccionado");
+					Scanner lector1 =  new Scanner(System.in); 
+					String genre = lector1.next();
+					modelo.moviesByGenre(genre);
+					break;
+					
+				case 6:
+					System.out.println("Ingrese el género seleccionado");
+					Scanner lector2 =  new Scanner(System.in); 
+					String genre2 = lector2.next();
+					modelo.sortMoviesByGenre(genre2);
+					break;
+					
 				default: 
 					view.printMessage("--------- \n Opcion Invalida !! \n---------");
 					break;

@@ -76,7 +76,11 @@ public class Modelo {
 				String [] palabras = cadena.split(";");
 				if (palabras[1].equals(pDirector)) 
 				{
+<<<<<<< HEAD
 					Pelicula nueva = new Pelicula(Integer.parseInt(palabras[0]), 0.0, palabras[4], "", "", palabras[2], "", "", "", "", "", "", "", "", "", "", "", "", palabras[3], 0, 0, 0, 0);
+=======
+					Pelicula nueva = new Pelicula(Integer.parseInt(palabras[0]), 0.0, palabras[4], "", "", palabras[2], "", "", "", "", "", "", 0, 0, "", "", "", "", palabras[3], 0, 0, 0, 0);
+>>>>>>> 152511b55264669d85775b1b4f5c3d1aa82ba447
 					respuesta.agregar(nueva);
 				}
 			}
@@ -415,11 +419,11 @@ public void leerCastingArregloDinamico() {
 				
 					k++;
 					
-					String ganancia = (data[k]);
+					int ganancia = Integer.parseInt(data[k]);
 					
 					k++;
 				
-					String tiempoReproduccion =(data[k]);
+					int  tiempoReproduccion =Integer.parseInt(data[k]);
 					
 					k++;
 				
@@ -456,8 +460,10 @@ public void leerCastingArregloDinamico() {
 					
 					int numeroIdiomasHablados = Integer.parseInt(data[k]);
 					
-					Pelicula Pelicula1 = new Pelicula(iD,presupuesto,generos,imdb_Id,idiomaOriginal,tituloOriginal, resumen, popularidad, productora,productCompanies,productCompanies, fechaEstreno
-							,ganancia, tiempoReproduccion, idiomasHablados, Estado, tagline,titulo,promedioVotos,cuentaVotos
+					Pelicula Pelicula1 = new Pelicula(iD,presupuesto,generos,imdb_Id,idiomaOriginal,tituloOriginal,
+							resumen, popularidad, productora,productCompanies,productCompanies, fechaEstreno
+							,ganancia, tiempoReproduccion, idiomasHablados, Estado, tagline,titulo,
+							promedioVotos,cuentaVotos
 							,numeroCompaniaProductora, numeroCompaniaPaises,numeroIdiomasHablados);
 					
 			        peliculas.agregarAlFinal(Pelicula1);
@@ -498,7 +504,7 @@ public void leerCastingArregloDinamico() {
 			promedio = voteAcum / peliculasDelGenero.size();
 		}
 		
-		System.out.println("Total de pel�culas del g�nero: " + peliculasDelGenero.size());
+		System.out.println("Total de peliculas del genero: " + peliculasDelGenero.size());
 		System.out.println("El promedio de votos es: " + promedio);
 		System.err.println("Titulos de las peliculas");
 		for (int i = 1; i <= peliculasDelGenero.size(); i++) {
@@ -616,11 +622,11 @@ public void leerCastingArregloDinamico() {
 			
 				k++;
 				
-				String ganancia = (data[k]);
+				int ganancia = Integer.parseInt(data[k]);
 				
 				k++;
 			
-				String tiempoReproduccion =(data[k]);
+				int tiempoReproduccion =Integer.parseInt(data[k]);
 				
 				k++;
 			
