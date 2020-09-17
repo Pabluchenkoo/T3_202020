@@ -66,9 +66,6 @@ public class Pelicula implements Comparable<Pelicula>
 	
 	private IArregloDinamico casting;
 	
-	private Pelicula siguiente;
-	
-	private Pelicula anterior;
 
 	private String titulo;
 	
@@ -141,9 +138,6 @@ public class Pelicula implements Comparable<Pelicula>
 		
 		
 		numeroIdiomasHablados = pNumeroIdiomasHablados;
-		
-	
-		siguiente = null;
 	
 
 		titulo = ptitulo;
@@ -348,32 +342,7 @@ public class Pelicula implements Comparable<Pelicula>
 	}
 
 	
-	public  Pelicula darSiguiente()
-	{
-		return siguiente;
-	}
-	public Pelicula darAnterior()
-	{
-		return anterior;
-	}
-	public <T> void cambiarAnterior(T elemento)
-	{
-		anterior = (Pelicula) elemento;
-	}
-	
-	public <T> void cambiarSiguiente(T elemento)
-	{
-		siguiente= (Pelicula) elemento;
-	}
-	public void desconectarSiguiente()
-	{
-		siguiente = siguiente.siguiente;
-	}
-	public void insertarDespues(Pelicula peli)
-	{
-		peli.siguiente = siguiente;
-		siguiente = peli;
-		}	
+		
 
 	
 

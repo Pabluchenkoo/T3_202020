@@ -1,5 +1,7 @@
 package model.data_structures;
 
+import model.logic.Nodo;
+
 public interface ILista <T extends Comparable<T>> 
 {
 	
@@ -7,13 +9,13 @@ public interface ILista <T extends Comparable<T>>
 	
 	/** Agrega un elemento al inicio de la lista */
 	
-	void agregarPrimero(T element);
+	void agregarPrimero(Nodo<T> element);
 	
 	
 	
 	/** Agrega un elemento al final de la lista */
 	
-	void agregarAlFinal(T element);
+	void agregarAlFinal(Nodo<T> element);
 	
 	
 	
@@ -24,42 +26,42 @@ public interface ILista <T extends Comparable<T>>
 	elemento en la lista. La posición del primer elemento es 1,
 	la del segundo es 2 y así sucesivamente. */
 	
-	void insertarElemento(T element, int pos);
+	void insertarElemento(Nodo<T> element, int pos);
 	
 	
 	
 	/** Elimina el primer elemento. Se retorna el elemento
 	eliminado. */
 	
-	T removerPrimero( ) ;
+	Nodo<T> removerPrimero( ) ;
 	
 	
 	
 	/** Elimina el último elemento. Se retorna el elemento
   	eliminado. */
 	
-	T RemoverUltimo( );
+	Nodo<T> RemoverUltimo( );
 	
 	
 	/** Elimina el elemento de una posición válida. Se retorna el
 	elemento eliminado */
 	
-	T borrarElemento( int pos);
+	Nodo<T> borrarElemento( int pos);
 	
 	/** Retorna el primer elemento */
 	
-	T PrimerElemento( );
+	Nodo<T> PrimerElemento( );
 	
 	
 	/** Retorna el último elemento */
 	
-	T ultimoElemento() ;
+	Nodo<T> ultimoElemento() ;
 	
 	/** Retorna el elemento en una posición válida. La posición del
 	primer elemento es 1, la del segundo es 2 y así
 	sucesivamente. */
 	
-	T obtenerElemento( int pos);
+	Nodo<T> obtenerElemento( int pos);
 	
 	/** Retorna el número de datos en el arreglo **/
 	
@@ -73,7 +75,7 @@ public interface ILista <T extends Comparable<T>>
 	/** Retorna la posición válida de un elemento. Si no se
 	encuentra el elemento, el valor retornado es -1. */
 	
-	int estaPresente (T element);
+	int estaPresente (Nodo<T> element);
 	
 	
 	/** Intercambia la información de los elementos en dos
@@ -83,11 +85,10 @@ public interface ILista <T extends Comparable<T>>
 	
 	/** Actualiza el elemento en una posición válida. */
 	
-	void cambiarInformacion (int pos, T elem) ;
+	void cambiarInformacion (int pos, Nodo<T> elem) ;
 
 
 
-	T obtenerElemento(T elem);
 	
 	
 	

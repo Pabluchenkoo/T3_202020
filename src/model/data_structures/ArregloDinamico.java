@@ -7,7 +7,7 @@ package model.data_structures;
  * @author Fernando De la Rosa
  *
  */
-public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
+public class ArregloDinamico <T extends Comparable<T>> implements IArregloDinamico<T>{
 		/**
 		 * Capacidad maxima del arreglo
 		 */
@@ -273,7 +273,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		}
 
 		@Override
-		public T obtenerElemento(int pos) {
+		public T obtenerElementoPos(int pos) {
 			
 			if(elementos.length == 0){
 				return null;
@@ -339,7 +339,7 @@ public class ArregloDinamico <T extends Comparable<T>> implements ILista<T>{
 		}
 
 		@Override
-		public T obtenerElemento(T elem) {
+		public T obtenerElementoElem(T elem) {
 			// TODO Auto-generated method stub
 			for (int i = 0; i < tamanoAct-1; i++) {
 				if(elementos[i]==elem){

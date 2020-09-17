@@ -14,10 +14,16 @@ public class View
 	    
 		public void printMenu()
 		{
-			System.out.println("Opción 1: Realizar la carga de las fuentes de datos de las películas a una lista encadenada");
-			System.out.println("Opción 2: Realizar la carga de las fuentes de datos de las películas a un arreglo dinámico.");
-		    System.out.println("Opción 3: Resolver parciamente el requerimiento 2 del Reto 1 usando el algoritmo ShellSort");
-		    System.out.println("Opción 5: Entender un género de peliculas");	
+			System.out.println("1. Cargar datos a tabla hash");
+			System.out.println("2. Cargar datos a arreglo dinamico");
+		    System.out.println("3. REQ1");
+		    System.out.println("4. REQ2");
+		    System.out.println("5. REQ3");
+		    System.out.println("6. REQ4");
+		    System.out.println("7. REQ5");
+		    System.out.println("8. REQ6");
+		    System.out.println("9. Exit");
+		    
 		    System.out.println("Dar el numero de opcion a resolver, luego oprimir tecla Return: (e.g., 1):");
 		}
 
@@ -28,6 +34,6 @@ public class View
 		
 		public void printModelo(Modelo modelo)
 		{
-			// TODO implementar
+			
 		}
 }

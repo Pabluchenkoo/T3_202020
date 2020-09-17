@@ -1,5 +1,6 @@
 package model.data_structures;
 
+import model.logic.Nodo;
 import model.logic.Pelicula;
 
 public class ListaEncadenada <T extends Comparable<T>> implements ILista<T> 
@@ -8,7 +9,7 @@ public class ListaEncadenada <T extends Comparable<T>> implements ILista<T>
 {
 
 	
-	private T primero;
+	private Nodo<T> primero;
 	
 	private int numElementos;
 	
@@ -20,7 +21,7 @@ public class ListaEncadenada <T extends Comparable<T>> implements ILista<T>
 	}
 
 	@Override
-	public void agregarPrimero(T element) 
+	public void agregarPrimero (Nodo<T> element) 
 	{
 		// TODO Auto-generated method stub
 		if( primero ==null)
@@ -29,15 +30,15 @@ public class ListaEncadenada <T extends Comparable<T>> implements ILista<T>
 		}
 		else
 		{
-			((Pelicula) element).cambiarSiguiente(primero);
-			primero = element;
+			element.cambiarSiguiente(primero);
+			primero =  element;
 		}
 		numElementos++;
 		
 	}
 
 	@Override
-	public void agregarAlFinal(T element) 
+	public void agregarAlFinal(Nodo<T> element) 
 	{
 		// TODO Auto-generated method stub
 		if(primero==null)
@@ -46,97 +47,136 @@ public class ListaEncadenada <T extends Comparable<T>> implements ILista<T>
 		}
 		else
 		{
-			T p = ultimoElemento();
+			Nodo<T> p = ultimoElemento();
 			
-			((Pelicula) p).insertarDespues((Pelicula) element);
+			p.insertarDespues(element);
 		}
 		numElementos++;
 		
 	}
 
 	@Override
-	public void insertarElemento(T element, int pos) 
+	public void insertarElemento(Nodo<T> element, int pos) 
 	{
 		// TODO Auto-generated method stub
 		
 		int contador=0;
+		Nodo<T> actual = primero;
 		if(primero==null)
 		{
 			primero= element;
 		}
 		else 
 		{
-			//while ()
+			while(actual != null)
+			{
+				
+				if(contador == pos)
+				{
+					element.cambiarSiguiente(actual.darSiguiente());
+					element.cambiarAnterior(actual);
+					actual.darSiguiente().cambiarAnterior(element);
+					actual.cambiarSiguiente(element);
+					
+				}
+				else
+				{
+					actual.darSiguiente();
+				}
+				contador++;
+				
+			}
 		}
 		
 		
 	}
 
 	@Override
-	public T removerPrimero() 
+	public Nodo<T> removerPrimero() 
 	{
-		// TODO Auto-generated method stub
-		primero = (T) ((Pelicula) primero).darSiguiente();
+		
+		primero =  primero.darSiguiente();
 		
 		return primero;
 	}
 
 	@Override
-	public T RemoverUltimo() {
-		// TODO Auto-generated method stub
-		((Pelicula) ultimoElemento()).cambiarSiguiente(null);
+	public Nodo<T> RemoverUltimo() {
+		
+		ultimoElemento().cambiarSiguiente(null);
 		return ultimoElemento();
 	}
 
 	@Override
-	public T borrarElemento(int pos) {
-		// TODO Auto-generated method stub
+	public Nodo<T> borrarElemento(int pos) 
+	{
 		
-		return null;
+		Nodo<T> elemento = obtenerElemento(pos);
+		elemento.darAnterior().cambiarSiguiente(elemento.darSiguiente());
+		elemento.darSiguiente().cambiarAnterior(elemento.darAnterior());
+		
+		
+		return elemento;
 	}
 
 	@Override
-	public T PrimerElemento() 
+	public Nodo<T> PrimerElemento() 
 	{
-		// TODO Auto-generated method stub
 		
 		
 		return primero;
 	}
 
 	@Override
-	public T ultimoElemento() {
-		// TODO Auto-generated method stub
-		T actual = primero;
+	public Nodo<T> ultimoElemento() {
+		
+		Nodo<T> actual = primero;
 		if(actual != null)
 		{
-			while(((Pelicula) actual).darSiguiente() != null)
+			while ( actual.darSiguiente() != null)
 			{
-				actual=(T) ((Pelicula) actual).darSiguiente();
+				actual= actual.darSiguiente();
 			}
 		}
 		return actual;
 	}
 
 	@Override
-	public T obtenerElemento(T elem) 
+	public Nodo<T> obtenerElemento( int pos) 
 	{
-		// TODO Auto-generated method stub
+		
+		Nodo<T> actual = primero;
+		Nodo<T> respuesta = null;
+		int contador = 0;
+		
+		while(actual != null)
+		{
+			if(contador == pos)
+			{
+				respuesta = actual;
+			}
+			else
+			{
+				actual = actual.darSiguiente();
+			}
+			contador ++;
+			
+		}
 		
 		
-		return null;
+		return respuesta;
 	}
 
 	@Override
 	public int tamanio() {
-		// TODO Auto-generated method stub
+		
 		
 		return numElementos;
 	}
 
 	@Override
 	public boolean esVacio() {
-		// TODO Auto-generated method stub
+		
 		boolean respuesta = false;
 		if(primero==null)
 		{
@@ -153,11 +193,11 @@ public class ListaEncadenada <T extends Comparable<T>> implements ILista<T>
 	}
 
 	@Override
-	public int estaPresente(T element) 
+	public int estaPresente(Nodo<T> element) 
 	{
-		// TODO Auto-generated method stub
+		
 		int respuesta = 0;
-		T actual = primero;
+		Nodo<T> actual = primero;
 		if( actual == null )
 		{
 			respuesta = 0;
@@ -172,7 +212,7 @@ public class ListaEncadenada <T extends Comparable<T>> implements ILista<T>
 				}
 				else
 				{
-					((Pelicula) actual).darSiguiente();
+					actual.darSiguiente();
 				}
 				
 				
@@ -180,30 +220,33 @@ public class ListaEncadenada <T extends Comparable<T>> implements ILista<T>
 		}
 		
 		
-		return 0;
+		return respuesta;
 	}
 
 	@Override
 	public void intercambiar(int pos1, int pos2) 
 	{
 		// TODO Auto-generated method stub
+		Nodo<T> elementoPos1 = obtenerElemento(pos1);
+		Nodo<T> elementoPos2 = obtenerElemento(pos2);
+		
+		cambiarInformacion(pos1, elementoPos2);
+		cambiarInformacion(pos2, elementoPos1);
 		
 		
 	}
 
 	@Override
-	public void cambiarInformacion(int pos, T elem) 
+	public void cambiarInformacion(int pos, Nodo<T> elem) 
 	{
-		// TODO Auto-generated method stub
-		obtenerElemento(elem);
 		
+		@SuppressWarnings("unused")
+		Nodo<T> elementoPos = obtenerElemento(pos);
+		elementoPos = elem;
+
 	}
 
-	@Override
-	public T obtenerElemento(int pos) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 	
 	

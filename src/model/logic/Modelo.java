@@ -17,11 +17,11 @@ import model.data_structures.IArregloDinamico;
 import model.data_structures.ListaEncadenada;
 import model.data_structures.QuickSort;
 import model.data_structures.ShellSort;
-import model.data_structures.ShellSortArregloDinamico;
+
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
-import com.sun.tools.javac.util.List;
+
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
@@ -304,7 +304,7 @@ public void leerCastingArregloDinamico() {
 		
 		for ( int i = 0 ; i < peliculas.size() ; i++ )
 		{
-			Pelicula Pelicula = peliculas.obtenerElemento( i );
+			Pelicula Pelicula = peliculas.darElemento( i );
 			
 			if(director.darNombreDirector().equals( nombreDirector ))
 			{
@@ -319,7 +319,7 @@ public void leerCastingArregloDinamico() {
 		
 		for (int i = 1; i <= peliculasBuenasDelDirector.size(); i++) 
 		{
-			Pelicula PeliculaB = peliculas.obtenerElemento(i);	
+			Pelicula PeliculaB = peliculas.darElemento(i);	
 			System.out.println(PeliculaB.darTituloOriginal());
 		}
 		
@@ -330,11 +330,11 @@ public void leerCastingArregloDinamico() {
 		
 		for ( int i = 0 ; i < peliculas.size(); i++ )
 		{
-			Pelicula Pelicula = peliculas.obtenerElemento( i );
+			Pelicula Pelicula = peliculas.darElemento( i );
 			
 			for ( int j = i ; j <peliculas.size() ; j++ )	
 			{
-				Pelicula Pelicula2 = peliculas.obtenerElemento( j );
+				Pelicula Pelicula2 = peliculas.darElemento( j );
 				if ( Pelicula.darCuentaVotos() > Pelicula2.darCuentaVotos() )
 				{
 					peliculasConPeorPromedio.agregar( Pelicula );
@@ -495,7 +495,7 @@ public void leerCastingArregloDinamico() {
 		
 		for (int i = 0; i < peliculas.size(); i++) {
 		
-			Pelicula PeliculaB = peliculas.obtenerElemento(i);
+			Pelicula PeliculaB = peliculas.darElemento(i);
 			if(PeliculaB.darGenero().equals(genre)){
 				peliculasDelGenero.agregarAlFinal(PeliculaB);
 				
@@ -508,7 +508,7 @@ public void leerCastingArregloDinamico() {
 		System.out.println("El promedio de votos es: " + promedio);
 		System.err.println("Titulos de las peliculas");
 		for (int i = 1; i <= peliculasDelGenero.size(); i++) {
-			Pelicula PeliculaB = peliculas.obtenerElemento(i);	
+			Pelicula PeliculaB = peliculas.darElemento(i);	
 			System.out.println(PeliculaB.darTituloOriginal());
 		}
 		
@@ -525,7 +525,7 @@ public void leerCastingArregloDinamico() {
 			
 			
 			
-			Pelicula PeliculaB = peliculas.obtenerElemento(i);
+			Pelicula PeliculaB = peliculas.darElemento(i);
 			if(PeliculaB.darGenero().equals(genre)){
 				peliculasDelGenero.agregarAlFinal(PeliculaB);
 				//System.out.println(PeliculaB.darTituloOriginal());
@@ -537,7 +537,7 @@ public void leerCastingArregloDinamico() {
 		System.err.println("Lista Desordenada");
 		
 		for (int i = 1; i <= peliculasDelGenero.size(); i++) {
-			Pelicula PeliculaB = peliculas.obtenerElemento(i);
+			Pelicula PeliculaB = peliculas.darElemento(i);
 			System.out.println(PeliculaB.darTituloOriginal());
 		}
 		
@@ -547,7 +547,7 @@ public void leerCastingArregloDinamico() {
 		System.err.println("Lista Ordenada");
 		
 		for (int i = 1; i <= peliculasDelGenero.size(); i++) {
-			Pelicula PeliculaB = peliculas.obtenerElemento(i);
+			Pelicula PeliculaB = peliculas.darElemento(i);
 			System.out.println(PeliculaB.darTituloOriginal());
 			System.err.println(PeliculaB.darPromedioVotos());
 		}
