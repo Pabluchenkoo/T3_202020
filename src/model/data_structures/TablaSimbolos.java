@@ -3,14 +3,14 @@ package model.data_structures;
 public interface TablaSimbolos<K extends Comparable<K> , V extends Comparable <V>>
 {															//CarlosDios
 	
-	//Agregar una dupla (K, V) a la tabla. Si la llave K existe, se reemplaza su valor V
-	//asociado. V no puede ser null. En este caso una llave K solo tiene asociado un
-	//valor V.
+	/*Agregar una dupla (K, V) a la tabla. Si la llave K existe, se reemplaza su valor V
+	asociado. V no puede ser null. En este caso una llave K solo tiene asociado un
+	valor V. */
 	void put(K element , V element1);
 	
 	
 	
-	/*Obtener el valor V asociado a la llave K. Se obtiene nullsolo si la llave K no existe.
+	/*Obtener el valor V asociado a la llave K. Se obtiene null solo si la llave K no existe.
 	Se usa el comparador sobre las llaves para saber si existe.*/
 	V get( K element );
 	
