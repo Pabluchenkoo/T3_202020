@@ -17,7 +17,8 @@ import model.data_structures.IArregloDinamico;
 import model.data_structures.ListaEncadenada;
 import model.data_structures.QuickSort;
 import model.data_structures.ShellSort;
-
+import model.data_structures.TablaHashSeparateChaining;
+import model.data_structures.TablaSimbolos;
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -31,7 +32,7 @@ import com.opencsv.CSVReaderBuilder;
  * Definicion del modelo del mundo . . . . . . . . . . . . . . . . . . . . 
  *
  */
-public class Modelo {
+public class Modelo <K extends Comparable<K>, V extends Comparable <V>>  {
 	/**
 	 * Atributos del modelo del mundo
 	 */
@@ -44,6 +45,10 @@ public class Modelo {
 	
 	private ArregloDinamico<Casting> casting;
 	private ListaEncadenada peliculasLE;
+	private ArregloDinamico<K> keys; // the keys
+	private ArregloDinamico<V> values;
+	private TablaHashSeparateChaining<K,V> arreglo1;
+	
 	
 	/**
 	 * Constructor del modelo del mundo con capacidad predefinida
@@ -290,8 +295,98 @@ public void leerCastingArregloDinamico() {
 			}
 	}
 
-
-
+public void leerCastingArregloDinamico2() {
+	
+	try
+	{
+		CSVParser parser = new CSVParserBuilder().withSeparator(';').build();
+		
+		FileReader filereader = new FileReader("./data/SmallMoviesDetailsCleaned.csv");
+	     
+		 CSVReader csvReader = ( new CSVReaderBuilder(filereader))
+                 .withCSVParser(parser) 
+                 .build();
+		 
+		 csvReader.readNext();         
+		 String [] data;
+	     while ((data = csvReader.readNext()) != null) {
+	       
+				
+				int k = 0; 
+				
+				int iD= Integer.parseInt(data[k]);
+				k++;
+				
+				String nombreActor1 = data[k];
+				k++;
+				
+				String generoActor1 = data[k];
+				k++;
+				
+				String nombreActor2 = data[k];
+				k++;
+				
+				String generoActor2 = data[k];
+				k++;
+				
+				String nombreActor3 = data[k];
+				k++;
+				
+				String generoActor3 = data[k];
+				k++;
+				
+				String nombreActor4 = data[k];
+				k++;
+				
+				String generoActor4 = data[k];
+				k++;
+				
+				String nombreActor5 = data[k];
+				k++;
+				
+				String generoActor5 = data[k];
+				k++;
+				
+				int numeroActor = Integer.parseInt(data[k]);
+				k++;
+				
+				String NombreDirector =data[k];
+				k++;
+				
+				int generoDirector = Integer.parseInt(data[k]);
+				k++;
+				
+				int numeroDirector = Integer.parseInt(data[k]);
+				k++;
+				
+				String NombreProductor =data[k];
+				k++;
+				
+				int numeroProductor = Integer.parseInt(data[k]);
+				k++;
+				
+				String NombreEditor =data[k];
+				k++;
+				
+				
+				Casting Casting1 = new Casting(iD, nombreActor1, generoActor1, nombreActor2, generoActor2, 
+						nombreActor3, generoActor3, nombreActor4, generoActor4, nombreActor5, generoActor5,
+						numeroActor, NombreDirector, generoDirector, numeroDirector, NombreProductor, numeroProductor,
+						NombreEditor);
+				
+		        
+				arreglo1.put((K) generoActor1,(V) nombreActor1);
+	    	 
+	    	 
+	     }
+	     
+	
+	}     
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+}
 
 
 	@SuppressWarnings("null")
@@ -419,11 +514,11 @@ public void leerCastingArregloDinamico() {
 				
 					k++;
 					
-					int ganancia = Integer.parseInt(data[k]);
+					String ganancia = data[k];
 					
 					k++;
 				
-					int  tiempoReproduccion =Integer.parseInt(data[k]);
+					String  tiempoReproduccion =data[k];
 					
 					k++;
 				
@@ -460,11 +555,15 @@ public void leerCastingArregloDinamico() {
 					
 					int numeroIdiomasHablados = Integer.parseInt(data[k]);
 					
-					Pelicula Pelicula1 = new Pelicula(iD,presupuesto,generos,imdb_Id,idiomaOriginal,tituloOriginal,
-							resumen, popularidad, productora,productCompanies,productCompanies, fechaEstreno
-							,ganancia, tiempoReproduccion, idiomasHablados, Estado, tagline,titulo,
-							promedioVotos,cuentaVotos
-							,numeroCompaniaProductora, numeroCompaniaPaises,numeroIdiomasHablados);
+					Pelicula Pelicula1 = new Pelicula( iD,presupuesto, generos, imdb_Id,idiomaOriginal, 
+
+
+							tituloOriginal, resumen, popularidad, productora, productCompanies,
+							productionCountries,
+							fechaEstreno, ganancia, tiempoReproduccion, 
+							idiomasHablados, Estado, tagline, titulo,
+							promedioVotos, cuentaVotos, numeroCompaniaProductora, 
+							numeroCompaniaPaises,  numeroIdiomasHablados);
 					
 			        peliculas.agregarAlFinal(Pelicula1);
 					

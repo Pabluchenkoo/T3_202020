@@ -1,6 +1,8 @@
 package model.data_structures;
 
+import java.util.ArrayList;
 
+import model.data_structures.SequentialSearchST.Nodo;
 
 public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Comparable <V>> implements TablaSimbolos <K, V>{
 	
@@ -49,33 +51,41 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		return keys.darElemento(N-1); 
 	}
 	
-	public Iterable	<K> keys()
-	{  
-		return keys(min(), max());  
+//	public Iterable	<K> keys()
+//	{  
+//		return keys(min(), max());  
+//	}
+
+	@Override
+	public V remove(K key) {
+		// TODO Auto-generated method stub
+		V respuesta = null;
+		if (key != null)
+		{
+			respuesta = get(key);
+			put(key,null);
+		}
+		
+		return respuesta;
 	}
 
 	@Override
-	public V remove(K element) {
+	public boolean contains(K key) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean contains(K element) {
-		// TODO Auto-generated method stub
-		return false;
+		return get(key) != null;
 	}
 
 	@Override
 	public boolean isEmpty() {
 		// TODO Auto-generated method stub
-		return false;
+		
+		return N == 0;
 	}
 
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub
-		return 0;
+		return N;
 	}
 
 	@Override
@@ -83,7 +93,6 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public ArregloDinamico<V> valueSet() {
 		// TODO Auto-generated method stub
