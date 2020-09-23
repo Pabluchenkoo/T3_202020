@@ -25,7 +25,12 @@ public class SequentialSearchST<K,V> {
 			
 			this.siguiente = siguiente;
 		}
+		
 	}
+	
+	
+	
+	
 		public V get( K key )
 		{
 			for( Nodo<K, V> i = primero ; i != null ; i = i.siguiente )

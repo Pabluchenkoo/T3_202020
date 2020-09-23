@@ -1,6 +1,8 @@
 package model.data_structures;
 
+import java.util.Iterator;
 
+import model.data_structures.SequentialSearchST.Nodo;
 
 public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Comparable <V>> implements TablaSimbolos <K, V>{
 	
@@ -13,6 +15,19 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 	
 	private SequentialSearchST<K, V>[] st;
 	
+	/**
+	 * Factor de carga (size/capacity) m?ximo.
+	 */
+	private static final double MAXIMUM_LOAD_FACTOR = 5.0;
+
+
+
+	/**
+	 * N?mero de posiciones ocupadas en el arreglo por al menos una llave, capacidad
+	 * real del arreglo, tama?o, n?mero de rehashes hechos y factor de carga actual.
+	 */
+	private int height, capacity, size, numOfRehashes = 0;
+	private double loadFactor = 0.0;
 	@SuppressWarnings("unchecked")
 	public void SeparateChainingHashST( int M )
 	{
@@ -58,12 +73,46 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		return keys.darElemento(N-1); 
 	}
 	
-//	public Iterable	<K> keys(K lo, K hi)
-//	{  
-//		ArregloDinamico<K> q = new ArregloDinamico<K>(M);
-//		for (int i = )
-//		
-//	}
+	/**
+	 * @return Iterador sobre todas las llaves de la tabla de hash.
+	 */
+	public Iterator<K> keys( )
+	{
+		return new Iterator<K>( )
+		{
+			int iActual = 0;
+			int hActual = 0;
+			private SequentialSearchST<K, V> actual = null;
+
+			@Override
+			public boolean hasNext( )
+			{
+				return iActual < capacity && hActual < height;
+			}
+
+			@Override
+			public K next( )
+			{
+				if( actual != null && actual != null )
+					actual = actual;
+				else
+					while( hActual < height )
+					{
+						if( st[iActual] != null )
+						{
+							actual = st[iActual];
+							iActual++;
+							hActual++;
+							break;
+						}
+						iActual++;
+					}
+
+				return actual.key;
+			}
+		};
+	}
+
 
 	@Override
 	public V remove(K key) {
@@ -148,6 +197,28 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		}
 		return respuesta;
 		
+	}
+	/**
+	 * Hace el rehash a la tabla. <b>post:</b> La tabla queda poblada nuevamente con
+	 * sus pares llave-valor y el atributo numOfRehashes aumenta en 1.
+	 */
+	private void rehash( )
+	{
+		numOfRehashes++;
+		capacity *= 2;				// Se duplica la capacidad de la tabla.
+		HashNode<K, V>[] temp = st; // Guarda los pares llave-valor.
+		clear( );					// Reinicializa la tabla.
+
+		for( int i = 0; i < temp.length; i++ )
+			for( HashNode<K, V> x = temp[i]; x != null; x = x.getNext( ) )
+			{
+				// Se inserta el nodo.
+				insert( x.key, x.value );
+
+				// Se insertan los nodos dentro de la lista enlazada secundaria del nodo.
+				for( V y : x.getSecondaryLinkedList( ) )
+					insert( x.key, y );
+			}
 	}
 
 
