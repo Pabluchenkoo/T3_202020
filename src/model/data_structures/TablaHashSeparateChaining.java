@@ -1,6 +1,10 @@
 package model.data_structures;
 
+<<<<<<< HEAD
 import java.util.Iterator;
+=======
+import java.util.ArrayList;
+>>>>>>> 63ab3ba074eee805aad5dd27b32aa9bba95c750b
 
 import model.data_structures.SequentialSearchST.Nodo;
 
@@ -73,6 +77,7 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		return keys.darElemento(N-1); 
 	}
 	
+<<<<<<< HEAD
 	/**
 	 * @return Iterador sobre todas las llaves de la tabla de hash.
 	 */
@@ -113,6 +118,19 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		};
 	}
 
+=======
+
+//	public Iterable	<K> keys()
+//	{  
+//		return keys(min(), max());  
+//	public Iterable	<K> keys(K lo, K hi)
+//	{  
+//		ArregloDinamico<K> q = new ArregloDinamico<K>(M);
+//		for (int i = )
+//		
+
+//	}
+>>>>>>> 63ab3ba074eee805aad5dd27b32aa9bba95c750b
 
 	@Override
 	public V remove(K key) {
@@ -126,17 +144,17 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		}
 		
 		return respuesta;
-		
+
 	}
 
 	@Override
-
 	public boolean contains(K key) {
-
 		// TODO Auto-generated method stub
 		return get(key) != null;
+
 		
 	}
+
 
 	@Override
 
@@ -145,6 +163,7 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		// TODO Auto-generated method stub
 		return size() == 0;
 		
+
 	}
 
 	@Override
@@ -159,6 +178,10 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 	@Override
 
 	public ArregloDinamico<K> keySet() {
+
+		// TODO Auto-generated method stub
+	
+
         // TODO Auto-generated method stub
 		ArregloDinamico<K> respuesta = new ArregloDinamico<K>(M);
 		if(keys.esVacio())
@@ -175,6 +198,7 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		}
 		return respuesta;
     }
+
 
 	@Override
 
