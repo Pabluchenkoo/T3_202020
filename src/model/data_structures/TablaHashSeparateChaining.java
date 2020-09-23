@@ -15,6 +15,7 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 	
 	private SequentialSearchST<K, V>[] st;
 	
+	@SuppressWarnings("unchecked")
 	public void SeparateChainingHashST( int M )
 	{
 		this.M = M;
@@ -28,6 +29,14 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 	
 	private int hash (K key)
 	{
+		
+		if(N/M >= 5.0)
+		{
+			SequentialSearchST<K,V> x = new SequentialSearchST<K,V>();
+			x.rehash();
+			
+		}
+	
 		return (key.hashCode() & 0x7fffffff) % M;
 	}
 	
@@ -51,13 +60,25 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		return keys.darElemento(N-1); 
 	}
 	
+<<<<<<< HEAD
 //	public Iterable	<K> keys()
 //	{  
 //		return keys(min(), max());  
+=======
+//	public Iterable	<K> keys(K lo, K hi)
+//	{  
+//		ArregloDinamico<K> q = new ArregloDinamico<K>(M);
+//		for (int i = )
+//		
+>>>>>>> e974dfe4c869ef5996fb028a516e62cd1fd9a41e
 //	}
 
 	@Override
 	public V remove(K key) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> e974dfe4c869ef5996fb028a516e62cd1fd9a41e
 		// TODO Auto-generated method stub
 		V respuesta = null;
 		if (key != null)
@@ -67,36 +88,101 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		}
 		
 		return respuesta;
+<<<<<<< HEAD
 	}
 
 	@Override
 	public boolean contains(K key) {
 		// TODO Auto-generated method stub
 		return get(key) != null;
+=======
+		
 	}
 
 	@Override
-	public boolean isEmpty() {
+
+	public boolean contains(K key) {
+
 		// TODO Auto-generated method stub
+		return get(key) != null;
+		
+>>>>>>> e974dfe4c869ef5996fb028a516e62cd1fd9a41e
+	}
+
+	@Override
+
+	public boolean isEmpty() {
+
+		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		
 		return N == 0;
+=======
+		return size() == 0;
+		
+>>>>>>> e974dfe4c869ef5996fb028a516e62cd1fd9a41e
 	}
 
 	@Override
+
+
 	public int size() {
+
 		// TODO Auto-generated method stub
 		return N;
 	}
 
 	@Override
+
 	public ArregloDinamico<K> keySet() {
+<<<<<<< HEAD
 		// TODO Auto-generated method stub
 		return null;
 	}
+=======
+        // TODO Auto-generated method stub
+		ArregloDinamico<K> respuesta = new ArregloDinamico<K>(M);
+		if(keys.esVacio())
+		{
+			respuesta = null;
+		}
+		else 
+		{
+		for (int i = 0; i<keys.darTamano();i++)
+		{
+			K dato = keys.darElemento(i);
+			respuesta.agregar(dato);            
+		}
+		}
+		return respuesta;
+    }
+
+>>>>>>> e974dfe4c869ef5996fb028a516e62cd1fd9a41e
 	@Override
-	public ArregloDinamico<V> valueSet() {
+
+	public ArregloDinamico<V> valueSet() 
+	{
+
 		// TODO Auto-generated method stub
-		return null;
+		ArregloDinamico<V> respuesta = new ArregloDinamico<V>(M);
+		if(values.esVacio())
+		{
+			respuesta = null;
+		}
+		else 
+		{
+		for (int i = 0; i<values.darTamano();i++)
+		{
+			V dato = values.darElemento(i);
+			respuesta.agregar(dato);            
+		}
+		}
+		return respuesta;
+		
 	}
 
-	}
+
+}
+
+	
+

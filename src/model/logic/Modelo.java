@@ -17,8 +17,13 @@ import model.data_structures.IArregloDinamico;
 import model.data_structures.ListaEncadenada;
 import model.data_structures.QuickSort;
 import model.data_structures.ShellSort;
+<<<<<<< HEAD
 import model.data_structures.TablaHashSeparateChaining;
 import model.data_structures.TablaSimbolos;
+=======
+import model.data_structures.TablaHashLinearProbing;
+import model.data_structures.TablaHashSeparateChaining;
+>>>>>>> e974dfe4c869ef5996fb028a516e62cd1fd9a41e
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -32,7 +37,12 @@ import com.opencsv.CSVReaderBuilder;
  * Definicion del modelo del mundo . . . . . . . . . . . . . . . . . . . . 
  *
  */
+<<<<<<< HEAD
 public class Modelo <K extends Comparable<K>, V extends Comparable <V>>  {
+=======
+public class Modelo <K extends Comparable<K> , V extends Comparable <V>>
+{
+>>>>>>> e974dfe4c869ef5996fb028a516e62cd1fd9a41e
 	/**
 	 * Atributos del modelo del mundo
 	 */
@@ -45,9 +55,15 @@ public class Modelo <K extends Comparable<K>, V extends Comparable <V>>  {
 	
 	private ArregloDinamico<Casting> casting;
 	private ListaEncadenada peliculasLE;
+<<<<<<< HEAD
 	private ArregloDinamico<K> keys; // the keys
 	private ArregloDinamico<V> values;
 	private TablaHashSeparateChaining<K,V> arreglo1;
+=======
+	private TablaHashSeparateChaining<K,V> separateChaining;
+	private TablaHashLinearProbing<K,V> linearProbing;
+	
+>>>>>>> e974dfe4c869ef5996fb028a516e62cd1fd9a41e
 	
 	
 	/**
@@ -448,13 +464,17 @@ public void leerCastingArregloDinamico2() {
 	}
 
 
-	public void leerPeliculasArregloDinamico() {
+	public void leerPeliculasTablaHashLP() {
 		
 		try
+
 		{
+			
+			
+			
 			CSVParser parser = new CSVParserBuilder().withSeparator(';').build();
 			
-			FileReader filereader = new FileReader("./data/SmallMoviesDetailsCleaned.csv");
+			FileReader filereader = new FileReader("./data/AllMoviesCastingRaw.csv");
 		     
 			 CSVReader csvReader = ( new CSVReaderBuilder(filereader))
                      .withCSVParser(parser) 
@@ -565,7 +585,9 @@ public void leerCastingArregloDinamico2() {
 							promedioVotos, cuentaVotos, numeroCompaniaProductora, 
 							numeroCompaniaPaises,  numeroIdiomasHablados);
 					
-			        peliculas.agregarAlFinal(Pelicula1);
+					String key = productCompanies + fechaEstreno;
+					
+			        linearProbing.put((K)key , (V) );
 					
 		    	 
 		    	 
@@ -582,7 +604,140 @@ public void leerCastingArregloDinamico2() {
 			}
 	}
 	
+public void leerPeliculasTablaHashSC() {
+		
+		try
+		
 	
+		{
+			
+			
+			
+			CSVParser parser = new CSVParserBuilder().withSeparator(';').build();
+			
+			FileReader filereader = new FileReader("./data/SmallMoviesDetailsCleaned.csv");
+		     
+			 CSVReader csvReader = ( new CSVReaderBuilder(filereader))
+                     .withCSVParser(parser) 
+                     .build();
+			 
+			 csvReader.readNext();         
+			 String [] data;
+		     while ((data = csvReader.readNext()) != null) {
+		       
+			
+	
+					
+					int k = 0; 
+					
+					int iD= Integer.parseInt(data[k]);
+					k++;
+					
+					double presupuesto = Double.parseDouble(data[k]);
+					k++;
+				
+					String generos =data[k];
+					k++;
+					
+					String imdb_Id = data[k];
+				
+					k++;
+					
+					String idiomaOriginal = data[k];
+				
+					k++;
+					
+					String tituloOriginal = data[k];
+				
+					k++;
+					
+					String resumen =data[k];
+	
+					k++;
+					
+					String popularidad =data[k];
+				
+					k++;
+					
+					String productora = data[k];
+				
+					k++;
+					
+					String productCompanies =data[k];
+					
+					k++;
+					
+					String productionCountries = data[k];
+					
+					k++;
+					
+					String fechaEstreno = data[k];
+				
+					k++;
+					
+					int ganancia = Integer.parseInt(data[k]);
+					
+					k++;
+				
+					int  tiempoReproduccion =Integer.parseInt(data[k]);
+					
+					k++;
+				
+					String idiomasHablados = data[k];
+					
+					k++;
+					
+					String Estado = data[k];
+					
+					k++;
+					
+					String tagline = data[k];
+					
+					k++;
+					
+					String titulo =data[k];
+					k++;
+					
+					String promedioVotos = (data[k]);
+					
+					k++;
+					
+					int cuentaVotos = Integer.parseInt(data[k]);
+					
+					k++;
+					
+					int numeroCompaniaProductora = Integer.parseInt(data[k]);
+					
+					
+					
+					int numeroCompaniaPaises = Integer.parseInt(data[k]);
+					
+					
+					
+					int numeroIdiomasHablados = Integer.parseInt(data[k]);
+					
+					Pelicula Pelicula1 = new Pelicula(iD,presupuesto,generos,imdb_Id,idiomaOriginal,tituloOriginal,
+							resumen, popularidad, productora,productCompanies,productCompanies, fechaEstreno
+							,ganancia, tiempoReproduccion, idiomasHablados, Estado, tagline,titulo,
+							promedioVotos,cuentaVotos
+							,numeroCompaniaProductora, numeroCompaniaPaises,numeroIdiomasHablados);
+					
+			        peliculas.agregarAlFinal(Pelicula1);
+					
+		    	 
+		    	 
+		     }
+		     
+		     sortMoviesByGenre("Comedy");
+		     
+
+		
+		}     
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+	}
 	
 	public void moviesByGenre(String genre){
 		
