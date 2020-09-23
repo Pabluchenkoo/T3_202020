@@ -1,10 +1,10 @@
 package model.data_structures;
 
-<<<<<<< HEAD
+
 import java.util.Iterator;
-=======
+
 import java.util.ArrayList;
->>>>>>> 63ab3ba074eee805aad5dd27b32aa9bba95c750b
+
 
 import model.data_structures.SequentialSearchST.Nodo;
 
@@ -77,7 +77,7 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		return keys.darElemento(N-1); 
 	}
 	
-<<<<<<< HEAD
+
 	/**
 	 * @return Iterador sobre todas las llaves de la tabla de hash.
 	 */
@@ -118,7 +118,7 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		};
 	}
 
-=======
+
 
 //	public Iterable	<K> keys()
 //	{  
@@ -130,7 +130,7 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 //		
 
 //	}
->>>>>>> 63ab3ba074eee805aad5dd27b32aa9bba95c750b
+
 
 	@Override
 	public V remove(K key) {
@@ -230,14 +230,14 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 	{
 		numOfRehashes++;
 		capacity *= 2;				// Se duplica la capacidad de la tabla.
-		HashNode<K, V>[] temp = st; // Guarda los pares llave-valor.
-		clear( );					// Reinicializa la tabla.
+		SequentialSearchST<K, V>[] pares = st; // Guarda los pares llave-valor.
+							// Reinicializa la tabla.
 
-		for( int i = 0; i < temp.length; i++ )
-			for( HashNode<K, V> x = temp[i]; x != null; x = x.getNext( ) )
+		for( int i = 0; i < pares.length; i++ )
+			for( SequentialSearchST<K,V> x = pares[i]; x != null; x = x.siguiente )
 			{
 				// Se inserta el nodo.
-				insert( x.key, x.value );
+				put( x.key, x.value );
 
 				// Se insertan los nodos dentro de la lista enlazada secundaria del nodo.
 				for( V y : x.getSecondaryLinkedList( ) )

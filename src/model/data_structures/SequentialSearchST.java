@@ -66,7 +66,11 @@ public class SequentialSearchST<K,V> {
 	    int numBuckets; 
 	  
 	    // Default loadFactor 
-	    final double DEFAULT_LOAD_FACTOR = 0.75; 
+	    final double DEFAULT_LOAD_FACTOR = 0.75;
+
+		protected K key;
+
+		public SequentialSearchST<K, V> siguiente; 
 	  
 	    public SequentialSearchST() 
 	    { 
