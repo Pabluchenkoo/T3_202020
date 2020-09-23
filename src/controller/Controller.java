@@ -45,37 +45,26 @@ public class Controller {
 			int option = lector.nextInt();
 			switch(option){
 				case 1:
-					System.out.println("Ingrese el director");
-					Scanner lector3 = new Scanner(System.in);
-					String director = lector3.next();
-					modelo.PeliculasBuenasDeDirector(director);
+					System.out.println("Carga de fuentes de datos");
+					System.out.println("Linear Probing");
+					modelo.leerPeliculasTablaHashLP();
+					System.out.println("Separate Chaining");
+					modelo.leerPeliculasTablaHashSC();
 					break;
 				case 2:
-					modelo.peliculasConPeorPromedio();
+					System.out.println("Req1 Reto 2 Linear Probing");
+					
 					break;
 				case 3:
-					System.out.println("Ingrese el director");
+					System.out.println("Req1 Reto 2 Separate Chaining");
 					Scanner lector4 = new Scanner(System.in);
 					String director1 = lector4.next();
 					modelo.moviesByDirector(director1);
 					break;
 				case 4:
+					System.out.println("Pruebas de desempeño");
 					modelo.moviesByActor(null);
 					
-					break;
-					
-				case 5:
-					System.out.println("Ingrese el gï¿½nero seleccionado");
-					Scanner lector1 =  new Scanner(System.in); 
-					String genre = lector1.next();
-					modelo.moviesByGenre(genre);
-					break;
-					
-				case 6:
-					System.out.println("Ingrese el gï¿½nero seleccionado");
-					Scanner lector2 =  new Scanner(System.in); 
-					String genre2 = lector2.next();
-					modelo.sortMoviesByGenre(genre2);
 					break;
 					
 				default: 
@@ -85,7 +74,11 @@ public class Controller {
 					
 			}
 		}
-		
 	}	
-	
+	public void imprimirLP()
+	{
+		modelo.leerPeliculasTablaHashLP();
+		
+		
+	}
 }

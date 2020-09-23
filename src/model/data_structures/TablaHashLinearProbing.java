@@ -1,9 +1,14 @@
 package model.data_structures;
 
-import model.data_structures.SequentialSearchST.Nodo;
+import model.data_structures.SequentialSearchST.Nodo1;
 
 public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparable <V>> implements TablaSimbolos <K, V> 
 {
+	
+	private static final double MAXIMUM_LOAD_FACTOR = 5.0;
+	
+	private double loadFactor = 0.0;
+	
 	
 	//atributos
 	
@@ -12,28 +17,17 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
 	private int M; // size of linear-probing table  
 	private ArregloDinamico<K> keys; // the keys
 	private ArregloDinamico<V> values; // the values
-	
+	private int numOfRehashes = 0;
 	//constructor
 	public TablaHashLinearProbing(int cap)
 	{
 		
 		keys = new ArregloDinamico<K>(M);
-		values = new ArregloDinamico<V>(M);
-		
-		
-		
-		
+		values = new ArregloDinamico<V>(M);	
 	}
 	
 	//metodos
-	private int hash(K key)
-	{
-		
-		
-		
-		
-		return (key.hashCode() & 0x7fffffff) % M; 	
-	}
+	
 	
 	@Override
 	public void put(K key, V pValue) 
@@ -172,9 +166,35 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
         values = temp.values;
         M    = temp.M;
     }
-
-	
+	private int hash (K key)
+	{
 		
+		if(N/M >= 0.75)
+		{
+			SequentialSearchST<K,V> x = new SequentialSearchST<K,V>();
+			x.rehash();
+			numOfRehashes++;
+			
+		}
+	
+		return (key.hashCode() & 0x7fffffff) % M;
+	}
+	public int darM()
+	{
+		return M;
+	}
+	public int darN()
+	{
+		return N;
+	}
+	public int darNumOfRehashes()
+	{
+		return numOfRehashes;
+	}
+	public double darLoadFactor()
+	{
+		return loadFactor;
+	}
 }
 
 

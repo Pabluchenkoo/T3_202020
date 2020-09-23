@@ -589,10 +589,9 @@ public void leerCastingArregloDinamico2() {
 					ArregloDinamico<Pelicula> datos = new ArregloDinamico(2);
 					
 					datos.agregar(Pelicula1);;
-			        linearProbing.put((K)key , (V) datos);
-					
-		    	 
-		    	 
+			        linearProbing.put((K)key , (V) datos);	 
+			        System.out.println("Numero de duplas:" + linearProbing.darN() + '\n' + "Factor de carga:"+ linearProbing.darLoadFactor() + "\n"+"numero de rehashes:" + linearProbing.darNumOfRehashes() );
+			        
 		     }
 		}     
 			catch(Exception e)
@@ -726,7 +725,7 @@ public void leerPeliculasTablaHashSC() {
 					datos.agregar(Pelicula1);;
 			        separateChaining.put((K)key , (V) datos);
 					
-		    	 
+		    	 System.out.println("Numero de duplas:" + separateChaining.darN() + '\n' + "Factor de carga:"+ separateChaining.darLoadFactor() + "\n"+"numero de rehashes:" + separateChaining.darnumOfRehashes() );
 		    	 
 		     }
 		}     

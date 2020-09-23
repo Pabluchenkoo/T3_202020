@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class SequentialSearchST<K,V> {
 	
-	private Nodo<K,V> primero;
+	private Nodo1<K,V> primero;
 	
 	@SuppressWarnings("hiding")
-	public class Nodo<K,V>
+	public class Nodo1<K,V>
 	
 	{
 		
@@ -15,9 +15,9 @@ public class SequentialSearchST<K,V> {
 		
 		V value;
 		
-		Nodo<K,V> siguiente;
+		Nodo1<K,V> siguiente;
 		
-		public Nodo (K key, V value, Nodo<K, V> siguiente)
+		public Nodo1 (K key, V value, Nodo1<K, V> siguiente)
 		{
 			this.key = key;
 			
@@ -33,7 +33,7 @@ public class SequentialSearchST<K,V> {
 	
 		public V get( K key )
 		{
-			for( Nodo<K, V> i = primero ; i != null ; i = i.siguiente )
+			for( Nodo1<K, V> i = primero ; i != null ; i = i.siguiente )
 			{
 				if ( key.equals(i.key) )
 				{
@@ -45,7 +45,7 @@ public class SequentialSearchST<K,V> {
 		
 		public void put (K key, V value)
 		{
-			for ( Nodo<K, V> i = primero ; i!= null ; i = i.siguiente )
+			for ( Nodo1<K, V> i = primero ; i!= null ; i = i.siguiente )
 			{
 				if ( key.equals(i.key) )
 				{
@@ -53,11 +53,11 @@ public class SequentialSearchST<K,V> {
 					return;
 				}
 				
-				primero = new Nodo<K, V> ( key,value,primero );
+				primero = new Nodo1<K, V> ( key,value,primero );
 			}
 		}
 		
-		ArrayList<Nodo<K, V> > buckets; 
+		ArrayList<Nodo1<K, V> > buckets; 
 		  
 	    // No. of pairs stored - n 
 	    int size; 
@@ -104,7 +104,7 @@ public class SequentialSearchST<K,V> {
 	        int bucketInd = getBucketInd(key); 
 	  
 	        // The first node at that index 
-	        Nodo<K, V> head = buckets.get(bucketInd); 
+	        Nodo1<K, V> head = buckets.get(bucketInd); 
 	  
 	        // First, loop through all the nodes present at that index 
 	        // to check if the key already exists 
@@ -119,7 +119,7 @@ public class SequentialSearchST<K,V> {
 	        } 
 	  
 	        // new node with the K and V 
-	        Nodo<K, V> newElementNode = new Nodo<K, V>(key, value, head); 
+	        Nodo1<K, V> newElementNode = new Nodo1<K, V>(key, value, head); 
 	  
 	        // The head node at the index 
 	        head = buckets.get(bucketInd); 
@@ -163,10 +163,10 @@ public class SequentialSearchST<K,V> {
 	        System.out.println("\n***Rehashing Started***\n"); 
 	  
 	        // The present bucket list is made temp 
-	        ArrayList<Nodo<K, V> > temp = buckets; 
+	        ArrayList<Nodo1<K, V> > temp = buckets; 
 	  
 	        // New bucketList of double the old size is created 
-	        buckets = new ArrayList<Nodo<K, V> >(2 * numBuckets); 
+	        buckets = new ArrayList<Nodo1<K, V> >(2 * numBuckets); 
 	  
 	        for (int i = 0; i < 2 * numBuckets; i++) { 
 	            // Initialised to null 
@@ -181,7 +181,7 @@ public class SequentialSearchST<K,V> {
 	        for (int i = 0; i < temp.size(); i++) { 
 	  
 	            // head of the chain at that index 
-	            Nodo<K, V> head = temp.get(i); 
+	            Nodo1<K, V> head = temp.get(i); 
 	  
 	            while (head != null) { 
 	                K key = head.key; 
@@ -201,14 +201,14 @@ public class SequentialSearchST<K,V> {
 	    { 
 	  
 	        // The present bucket list is made temp 
-	        ArrayList<Nodo<K, V> > temp = buckets; 
+	        ArrayList<Nodo1<K, V> > temp = buckets; 
 	  
 	        System.out.println("Current HashMap:"); 
 	        // loop through all the nodes and print them 
 	        for (int i = 0; i < temp.size(); i++) { 
 	  
 	            // head of the chain at that index 
-	            Nodo<K, V> head = temp.get(i); 
+	            Nodo1<K, V> head = temp.get(i); 
 	  
 	            while (head != null) { 
 	                System.out.println("key = " + head.key + ", val = " + head.value); 

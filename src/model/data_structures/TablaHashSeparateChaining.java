@@ -6,12 +6,13 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 
-import model.data_structures.SequentialSearchST.Nodo;
+
+
 
 public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Comparable <V>> implements TablaSimbolos <K, V>{
 	
 	private int M;
-	
+	private int numeroRehashes;
 	private int N; // number of key-value pairs in the table
 	
 	private ArregloDinamico<K> keys; // the keys
@@ -20,7 +21,7 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 	private SequentialSearchST<K, V>[] st;
 	
 	/**
-	 * Factor de carga (size/capacity) m?ximo.
+	 * Factor de carga (size/capacity) maximo.
 	 */
 	private static final double MAXIMUM_LOAD_FACTOR = 5.0;
 
@@ -43,7 +44,14 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 			st[i] = new SequentialSearchST<>();
 		}
 	}
-	
+	public int darnumOfRehashes()
+	{
+		return numOfRehashes;
+	}
+	public double darLoadFactor()
+	{
+		return loadFactor;
+	}
 	private int hash (K key)
 	{
 		
@@ -51,6 +59,7 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		{
 			SequentialSearchST<K,V> x = new SequentialSearchST<K,V>();
 			x.rehash();
+			numeroRehashes++;
 			
 		}
 	
@@ -76,7 +85,10 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 	{  
 		return keys.darElemento(N-1); 
 	}
-	
+	public int darN()
+	{
+		return N;
+	}
 
 	/**
 	 * @return Iterador sobre todas las llaves de la tabla de hash.
@@ -222,28 +234,9 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		return respuesta;
 		
 	}
-	/**
-	 * Hace el rehash a la tabla. <b>post:</b> La tabla queda poblada nuevamente con
-	 * sus pares llave-valor y el atributo numOfRehashes aumenta en 1.
-	 */
-	private void rehash( )
-	{
-		numOfRehashes++;
-		capacity *= 2;				// Se duplica la capacidad de la tabla.
-		SequentialSearchST<K, V>[] pares = st; // Guarda los pares llave-valor.
-							// Reinicializa la tabla.
 
-		for( int i = 0; i < pares.length; i++ )
-			for( SequentialSearchST<K,V> x = pares[i]; x != null; x = x.siguiente )
-			{
-				// Se inserta el nodo.
-				put( x.key, x.value );
 
-				// Se insertan los nodos dentro de la lista enlazada secundaria del nodo.
-				for( V y : x.getSecondaryLinkedList( ) )
-					insert( x.key, y );
-			}
-	}
+
 
 
 }
