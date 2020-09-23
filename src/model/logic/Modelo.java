@@ -17,7 +17,8 @@ import model.data_structures.IArregloDinamico;
 import model.data_structures.ListaEncadenada;
 import model.data_structures.QuickSort;
 import model.data_structures.ShellSort;
-
+import model.data_structures.TablaHashLinearProbing;
+import model.data_structures.TablaHashSeparateChaining;
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -31,7 +32,8 @@ import com.opencsv.CSVReaderBuilder;
  * Definicion del modelo del mundo . . . . . . . . . . . . . . . . . . . . 
  *
  */
-public class Modelo {
+public class Modelo <K extends Comparable<K> , V extends Comparable <V>>
+{
 	/**
 	 * Atributos del modelo del mundo
 	 */
@@ -44,6 +46,10 @@ public class Modelo {
 	
 	private ArregloDinamico<Casting> casting;
 	private ListaEncadenada peliculasLE;
+	private TablaHashSeparateChaining<K,V> separateChaining;
+	private TablaHashLinearProbing<K,V> linearProbing;
+	
+	
 	
 	/**
 	 * Constructor del modelo del mundo con capacidad predefinida
@@ -353,10 +359,151 @@ public void leerCastingArregloDinamico() {
 	}
 
 
-	public void leerPeliculasArregloDinamico() {
+	public void leerPeliculasTablaHashLP() {
 		
 		try
+
 		{
+			
+			
+			
+			CSVParser parser = new CSVParserBuilder().withSeparator(';').build();
+			
+			FileReader filereader = new FileReader("./data/AllMoviesCastingRaw.csv");
+		     
+			 CSVReader csvReader = ( new CSVReaderBuilder(filereader))
+                     .withCSVParser(parser) 
+                     .build();
+			 
+			 csvReader.readNext();         
+			 String [] data;
+		     while ((data = csvReader.readNext()) != null) {
+		       
+			
+	
+					
+					int k = 0; 
+					
+					int iD= Integer.parseInt(data[k]);
+					k++;
+					
+					double presupuesto = Double.parseDouble(data[k]);
+					k++;
+				
+					String generos =data[k];
+					k++;
+					
+					String imdb_Id = data[k];
+				
+					k++;
+					
+					String idiomaOriginal = data[k];
+				
+					k++;
+					
+					String tituloOriginal = data[k];
+				
+					k++;
+					
+					String resumen =data[k];
+	
+					k++;
+					
+					String popularidad =data[k];
+				
+					k++;
+					
+					String productora = data[k];
+				
+					k++;
+					
+					String productCompanies =data[k];
+					
+					k++;
+					
+					String productionCountries = data[k];
+					
+					k++;
+					
+					String fechaEstreno = data[k];
+				
+					k++;
+					
+					int ganancia = Integer.parseInt(data[k]);
+					
+					k++;
+				
+					int  tiempoReproduccion =Integer.parseInt(data[k]);
+					
+					k++;
+				
+					String idiomasHablados = data[k];
+					
+					k++;
+					
+					String Estado = data[k];
+					
+					k++;
+					
+					String tagline = data[k];
+					
+					k++;
+					
+					String titulo =data[k];
+					k++;
+					
+					String promedioVotos = (data[k]);
+					
+					k++;
+					
+					int cuentaVotos = Integer.parseInt(data[k]);
+					
+					k++;
+					
+					int numeroCompaniaProductora = Integer.parseInt(data[k]);
+					
+					
+					
+					int numeroCompaniaPaises = Integer.parseInt(data[k]);
+					
+					
+					
+					int numeroIdiomasHablados = Integer.parseInt(data[k]);
+					
+					Pelicula Pelicula1 = new Pelicula(iD,presupuesto,generos,imdb_Id,idiomaOriginal,tituloOriginal,
+							resumen, popularidad, productora,productCompanies,productCompanies, fechaEstreno
+							,ganancia, tiempoReproduccion, idiomasHablados, Estado, tagline,titulo,
+							promedioVotos,cuentaVotos
+							,numeroCompaniaProductora, numeroCompaniaPaises,numeroIdiomasHablados);
+					
+					String key = productCompanies + fechaEstreno;
+					
+			        linearProbing.put((K)key , (V) );
+					
+		    	 
+		    	 
+		     }
+		     
+		     sortMoviesByGenre("Comedy");
+		     
+
+		
+		}     
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+	}
+	
+public void leerPeliculasTablaHashSC() {
+		
+		try
+		
+	
+		{
+			
+			
+			
 			CSVParser parser = new CSVParserBuilder().withSeparator(';').build();
 			
 			FileReader filereader = new FileReader("./data/SmallMoviesDetailsCleaned.csv");
@@ -482,8 +629,6 @@ public void leerCastingArregloDinamico() {
 				e.printStackTrace();
 			}
 	}
-	
-	
 	
 	public void moviesByGenre(String genre){
 		

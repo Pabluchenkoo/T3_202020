@@ -1,6 +1,6 @@
 package model.data_structures;
 
-
+import model.data_structures.SequentialSearchST.Nodo;
 
 public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparable <V>> implements TablaSimbolos <K, V> 
 {
@@ -9,7 +9,7 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
 	
 	private int N; // number of key-value pairs in the table
 	
-	private int M = 0; // size of linear-probing table  ¿tamaño?-CarlosDios
+	private int M; // size of linear-probing table  
 	private ArregloDinamico<K> keys; // the keys
 	private ArregloDinamico<V> values; // the values
 	
@@ -29,7 +29,10 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
 	private int hash(K key)
 	{
 		
-		return (key.hashCode() & 0x7fffffff) / M; //CarlosDios
+		
+		
+		
+		return (key.hashCode() & 0x7fffffff) % M; 	
 	}
 	
 	@Override
@@ -92,7 +95,7 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
 	}
 
 	@Override
-	public int size() {
+	public int 	size() {
 		
 		return N;
 	}
@@ -113,7 +116,7 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
 			respuesta.agregar(dato);            
 		}
 		}
-		return null;
+		return respuesta;
 		
 	}
 
@@ -132,7 +135,7 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
 			respuesta.agregar(dato);            
 		}
 		}
-		return null;
+		return respuesta;
 	}
 
 	@Override
@@ -142,21 +145,33 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
 		return size() == 0;
 	}
 
-	private void resize (int cap)
-	{
-		TablaHashLinearProbing < K, V> t;
-		t = new TablaHashLinearProbing < K, V> (cap);
-		for (int i =0;i<M;i++)
-		{
-			if(keys.darElemento(i) != null)
-			{
-				t.put(keys.darElemento(i), values.darElemento(i));
-			}
-			
-		}
-		keys = t.keys;
-		values = t.values;
-	}
+//	private void resize (int cap)
+//	{
+//		TablaHashLinearProbing < K, V> t;
+//		t = new TablaHashLinearProbing < K, V> (cap);
+//		for (int i =0;i<M;i++)
+//		{
+//			if(keys.darElemento(i) != null)
+//			{
+//				t.put(keys.darElemento(i), values.darElemento(i));
+//			}
+//			
+//		}
+//		keys = t.keys;
+//		values = t.values;
+//	}
+	private void resize(int capacity) {
+        TablaHashLinearProbing<K, V> temp = new TablaHashLinearProbing<K, V>(capacity);
+        for (int i = 0; i < M; i++) {
+            if (keys.obtenerElementoPos(i) != null) 
+            {
+                temp.put(keys.obtenerElementoPos(i), values.obtenerElementoPos(i));
+            }
+        }
+        keys = temp.keys;
+        values = temp.values;
+        M    = temp.M;
+    }
 
 	
 		

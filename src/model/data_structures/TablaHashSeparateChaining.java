@@ -1,27 +1,5 @@
 package model.data_structures;
 
-<<<<<<< HEAD
-public class TablaHashSeparateChaining<K extends Comparable<K>, V extends Comparable <V>> implements TablaSimbolos <K, V>
-{
-
-	@Override
-	public void put(K element, V element1) 
-	{
-		
-		
-	}
-
-	@Override
-	public V get(K element) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public V remove(K element) 
-	{
-=======
 
 
 public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Comparable <V>> implements TablaSimbolos <K, V>{
@@ -35,6 +13,7 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 	
 	private SequentialSearchST<K, V>[] st;
 	
+	@SuppressWarnings("unchecked")
 	public void SeparateChainingHashST( int M )
 	{
 		this.M = M;
@@ -48,6 +27,14 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 	
 	private int hash (K key)
 	{
+		
+		if(N/M >= 5.0)
+		{
+			SequentialSearchST<K,V> x = new SequentialSearchST<K,V>();
+			x.rehash();
+			
+		}
+	
 		return (key.hashCode() & 0x7fffffff) % M;
 	}
 	
@@ -71,75 +58,100 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		return keys.darElemento(N-1); 
 	}
 	
-	public Iterable	<K> keys()
-	{  
-		return keys(min(), max());  
-	}
+//	public Iterable	<K> keys(K lo, K hi)
+//	{  
+//		ArregloDinamico<K> q = new ArregloDinamico<K>(M);
+//		for (int i = )
+//		
+//	}
 
 	@Override
-	public V remove(K element) {
->>>>>>> dec6c1b83c982c60c733ca8e980825d5b8e0e473
+	public V remove(K key) {
+
 		// TODO Auto-generated method stub
-		return null;
+		V respuesta = null;
+		if (key != null)
+		{
+			respuesta = get(key);
+			put(key,null);
+		}
+		
+		return respuesta;
+		
 	}
 
 	@Override
-<<<<<<< HEAD
-	public boolean contains(K element) 
-	{
-=======
-	public boolean contains(K element) {
->>>>>>> dec6c1b83c982c60c733ca8e980825d5b8e0e473
+
+	public boolean contains(K key) {
+
 		// TODO Auto-generated method stub
-		return false;
+		return get(key) != null;
+		
 	}
 
 	@Override
-<<<<<<< HEAD
-	public boolean isEmpty() 
-	{
-=======
+
 	public boolean isEmpty() {
->>>>>>> dec6c1b83c982c60c733ca8e980825d5b8e0e473
+
 		// TODO Auto-generated method stub
-		return false;
+		return size() == 0;
+		
 	}
 
 	@Override
-<<<<<<< HEAD
-	public int size() 
-	{
-=======
+
+
 	public int size() {
->>>>>>> dec6c1b83c982c60c733ca8e980825d5b8e0e473
+
 		// TODO Auto-generated method stub
-		return 0;
+		return N;
 	}
 
 	@Override
-<<<<<<< HEAD
-	public ArregloDinamico<K> keySet() 
-	{
-=======
+
 	public ArregloDinamico<K> keySet() {
->>>>>>> dec6c1b83c982c60c733ca8e980825d5b8e0e473
-		// TODO Auto-generated method stub
-		return null;
-	}
+        // TODO Auto-generated method stub
+		ArregloDinamico<K> respuesta = new ArregloDinamico<K>(M);
+		if(keys.esVacio())
+		{
+			respuesta = null;
+		}
+		else 
+		{
+		for (int i = 0; i<keys.darTamano();i++)
+		{
+			K dato = keys.darElemento(i);
+			respuesta.agregar(dato);            
+		}
+		}
+		return respuesta;
+    }
 
 	@Override
-<<<<<<< HEAD
+
 	public ArregloDinamico<V> valueSet() 
 	{
-=======
-	public ArregloDinamico<V> valueSet() {
->>>>>>> dec6c1b83c982c60c733ca8e980825d5b8e0e473
+
 		// TODO Auto-generated method stub
-		return null;
+		ArregloDinamico<V> respuesta = new ArregloDinamico<V>(M);
+		if(values.esVacio())
+		{
+			respuesta = null;
+		}
+		else 
+		{
+		for (int i = 0; i<values.darTamano();i++)
+		{
+			V dato = values.darElemento(i);
+			respuesta.agregar(dato);            
+		}
+		}
+		return respuesta;
+		
 	}
 
-<<<<<<< HEAD
+
 }
-=======
-	}
->>>>>>> dec6c1b83c982c60c733ca8e980825d5b8e0e473
+
+	
+
