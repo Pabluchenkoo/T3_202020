@@ -1,6 +1,6 @@
 package model.data_structures;
 
-import model.data_structures.SequentialSearchST.Nodo;
+import model.data_structures.SequentialSearchST.Nodo1;
 
 public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparable <V>> implements TablaSimbolos <K, V> 
 {
@@ -18,20 +18,12 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
 	{
 		
 		keys = new ArregloDinamico<K>(M);
-		values = new ArregloDinamico<V>(M);
-		
-		
-		
-		
+		values = new ArregloDinamico<V>(M);	
 	}
 	
 	//metodos
 	private int hash(K key)
 	{
-		
-		
-		
-		
 		return (key.hashCode() & 0x7fffffff) % M; 	
 	}
 	

@@ -2,12 +2,13 @@ package model.data_structures;
 
 import java.util.ArrayList;
 
-import model.data_structures.SequentialSearchST.Nodo;
+import model.data_structures.SequentialSearchST.Nodo1;
+import model.logic.Nodo;
 
 public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Comparable <V>> implements TablaSimbolos <K, V>{
 	
 	private int M;
-	
+	private int numeroRehashes;
 	private int N; // number of key-value pairs in the table
 	
 	private ArregloDinamico<K> keys; // the keys
@@ -34,6 +35,7 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		{
 			SequentialSearchST<K,V> x = new SequentialSearchST<K,V>();
 			x.rehash();
+			numeroRehashes++;
 			
 		}
 	
@@ -162,8 +164,6 @@ public class TablaHashSeparateChaining <K extends Comparable<K>, V extends Compa
 		return respuesta;
 		
 	}
-
-
 }
 
 	

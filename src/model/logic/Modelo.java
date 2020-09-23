@@ -589,10 +589,7 @@ public void leerCastingArregloDinamico2() {
 					ArregloDinamico<Pelicula> datos = new ArregloDinamico(2);
 					
 					datos.agregar(Pelicula1);;
-			        linearProbing.put((K)key , (V) datos);
-					
-		    	 
-		    	 
+			        linearProbing.put((K)key , (V) datos);	 
 		     }
 		}     
 			catch(Exception e)
