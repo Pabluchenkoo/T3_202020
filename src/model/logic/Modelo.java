@@ -17,13 +17,13 @@ import model.data_structures.IArregloDinamico;
 import model.data_structures.ListaEncadenada;
 import model.data_structures.QuickSort;
 import model.data_structures.ShellSort;
-<<<<<<< HEAD
+
 import model.data_structures.TablaHashSeparateChaining;
 import model.data_structures.TablaSimbolos;
-=======
+
 import model.data_structures.TablaHashLinearProbing;
 import model.data_structures.TablaHashSeparateChaining;
->>>>>>> e974dfe4c869ef5996fb028a516e62cd1fd9a41e
+
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -37,12 +37,12 @@ import com.opencsv.CSVReaderBuilder;
  * Definicion del modelo del mundo . . . . . . . . . . . . . . . . . . . . 
  *
  */
-<<<<<<< HEAD
-public class Modelo <K extends Comparable<K>, V extends Comparable <V>>  {
-=======
+
+
+
 public class Modelo <K extends Comparable<K> , V extends Comparable <V>>
 {
->>>>>>> e974dfe4c869ef5996fb028a516e62cd1fd9a41e
+
 	/**
 	 * Atributos del modelo del mundo
 	 */
@@ -55,15 +55,14 @@ public class Modelo <K extends Comparable<K> , V extends Comparable <V>>
 	
 	private ArregloDinamico<Casting> casting;
 	private ListaEncadenada peliculasLE;
-<<<<<<< HEAD
 	private ArregloDinamico<K> keys; // the keys
 	private ArregloDinamico<V> values;
 	private TablaHashSeparateChaining<K,V> arreglo1;
-=======
+
 	private TablaHashSeparateChaining<K,V> separateChaining;
 	private TablaHashLinearProbing<K,V> linearProbing;
 	
->>>>>>> e974dfe4c869ef5996fb028a516e62cd1fd9a41e
+
 	
 	
 	/**
@@ -435,33 +434,33 @@ public void leerCastingArregloDinamico2() {
 		}
 		
 	}
-	public void peliculasConPeorPromedio () 
-	{ 
-		ArregloDinamico<Pelicula> peliculasConPeorPromedio = new ArregloDinamico<Pelicula>(20);
-		
-		for ( int i = 0 ; i < peliculas.size(); i++ )
-		{
-			Pelicula Pelicula = peliculas.darElemento( i );
-			
-			for ( int j = i ; j <peliculas.size() ; j++ )	
-			{
-				Pelicula Pelicula2 = peliculas.darElemento( j );
-				if ( Pelicula.darCuentaVotos() > Pelicula2.darCuentaVotos() )
-				{
-					peliculasConPeorPromedio.agregar( Pelicula );
-				}
-			}	
-		}
-		
-		Collections.reverse((List<?>) peliculasConPeorPromedio);
-		
-		for (int i = 1; i <= peliculasConPeorPromedio.size(); i++) 
-		{
-			Pelicula PeliculaB = peliculas.darElemento(i);	
-			System.out.println(PeliculaB.darTituloOriginal());
-		}
-		
-	}
+//	public void peliculasConPeorPromedio () 
+//	{ 
+//		ArregloDinamico<Pelicula> peliculasConPeorPromedio = new ArregloDinamico<Pelicula>(20);
+//		
+//		for ( int i = 0 ; i < peliculas.size(); i++ )
+//		{
+//			Pelicula Pelicula = peliculas.darElemento( i );
+//			
+//			for ( int j = i ; j <peliculas.size() ; j++ )	
+//			{
+//				Pelicula Pelicula2 = peliculas.darElemento( j );
+//				if ( Pelicula.darCuentaVotos() > Pelicula2.darCuentaVotos() )
+//				{
+//					peliculasConPeorPromedio.agregar( Pelicula );
+//				}
+//			}	
+//		}
+//		
+//		Collections.reverse((List<?>) peliculasConPeorPromedio);
+//		
+//		for (int i = 1; i <= peliculasConPeorPromedio.size(); i++) 
+//		{
+//			Pelicula PeliculaB = peliculas.darElemento(i);	
+//			System.out.println(PeliculaB.darTituloOriginal());
+//		}
+//		
+//	}
 
 
 	public void leerPeliculasTablaHashLP() {
@@ -587,16 +586,14 @@ public void leerCastingArregloDinamico2() {
 					
 					String key = productCompanies + fechaEstreno;
 					
-			        linearProbing.put((K)key , (V) );
+					ArregloDinamico<Pelicula> datos = new ArregloDinamico(2);
+					
+					datos.agregar(Pelicula1);;
+			        linearProbing.put((K)key , (V) datos);
 					
 		    	 
 		    	 
 		     }
-		     
-		     sortMoviesByGenre("Comedy");
-		     
-
-		
 		}     
 			catch(Exception e)
 			{
@@ -675,11 +672,11 @@ public void leerPeliculasTablaHashSC() {
 				
 					k++;
 					
-					int ganancia = Integer.parseInt(data[k]);
+					String ganancia = data[k];
 					
 					k++;
 				
-					int  tiempoReproduccion =Integer.parseInt(data[k]);
+					String  tiempoReproduccion =data[k];
 					
 					k++;
 				
@@ -722,16 +719,16 @@ public void leerPeliculasTablaHashSC() {
 							promedioVotos,cuentaVotos
 							,numeroCompaniaProductora, numeroCompaniaPaises,numeroIdiomasHablados);
 					
-			        peliculas.agregarAlFinal(Pelicula1);
+					String key = productCompanies + fechaEstreno;
+					
+					ArregloDinamico<Pelicula> datos = new ArregloDinamico(2);
+					
+					datos.agregar(Pelicula1);;
+			        separateChaining.put((K)key , (V) datos);
 					
 		    	 
 		    	 
 		     }
-		     
-		     sortMoviesByGenre("Comedy");
-		     
-
-		
 		}     
 			catch(Exception e)
 			{
@@ -876,11 +873,11 @@ public void leerPeliculasTablaHashSC() {
 			
 				k++;
 				
-				int ganancia = Integer.parseInt(data[k]);
+				String ganancia = data[k];
 				
 				k++;
 			
-				int tiempoReproduccion =Integer.parseInt(data[k]);
+				String tiempoReproduccion =data[k];
 				
 				k++;
 			
@@ -926,7 +923,7 @@ public void leerPeliculasTablaHashSC() {
 						
 						
 				
-		        peliculasLE.agregarAlFinal(Pelicula1);
+		        
 				
 		    }
 				
